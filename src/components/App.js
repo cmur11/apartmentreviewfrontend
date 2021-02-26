@@ -1,17 +1,27 @@
 // import logo from './logo.svg';
 import react, {useState, useEffect} from "react"
 import LoginForm from "./LoginForm"
+import ListingContainer from "./ListingContainer.js"
+import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
 import '../App.css';
 
 function App() {
-  const [currentUser,setCurrentUser] = useState(null);
+ 
+
+
 
 
   return (
     <div className="App">
-     
-      <LoginForm/>
-      
+      <Router>
+        <Route exact path="/login">
+          <LoginForm />
+        </Route>
+        
+        <Route exact path="/home">
+          <ListingContainer />
+        </Route>
+      </Router>
     </div>
   );
 }

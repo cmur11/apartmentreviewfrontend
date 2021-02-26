@@ -1,32 +1,33 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import '../components/css/login.css';
 // import { Header, Button, Icon } from 'semantic-ui-react'
 
 
-function LoginForm(){
+function LoginForm({handleLogin}){
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState([])
+  // const [loggedIn, setLoggedIn] = useState(false)
+  // const [user, setUser] = useState([])
  
 
  
-  function handleSubmit(e){
-    e.preventDefault()
-    console.log(user)
-  
-    fetch('http://localhost:3000/users')
-    .then(res => res.json())
-    .then(users => setUser(users[0]))
+  // function handleSubmit(e){
+  //   e.preventDefault()
     
-  }  
-
+  
+  //   fetch('http://localhost:3000/users')
+  //   .then(res => res.json())
+  //   .then((users) => handleLogin(users[0]))
+   
+  // }  
+  // console.log(user)
+  // console.log(loggedIn)
     return (
       <div className="login">
         {/* <Header as='h1' color="grey">Sign In</Header> */}
         <form 
-         onSubmit={handleSubmit}
+        //  onSubmit={handleSubmit}
           href="/home"
           className="login-form"
           
@@ -45,17 +46,14 @@ function LoginForm(){
               placeholder="Password" 
               onChange={(e) => (setPassword(e.target.value))} 
             />
-          {/* <Link to="/home"> */}
+          <Link to="/home">
 
-          {/* <Button animated
+           <button animated
             type="submit"
             className="login-button">
-              <Button.Content visible>Login</Button.Content>
-              <Button.Content hidden>
-              <Icon name='fire' />
-            </Button.Content>
-          </Button>
-          </Link> */}
+            Login
+          </button>
+          </Link> 
         </form>
     </div>
     ) 
