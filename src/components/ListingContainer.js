@@ -1,6 +1,7 @@
 import react, {useState, useEffect} from "react"
 import ListingNeighborhoods from "./ListingNeighborhoods"
 import ListingCards from "./ListingCards"
+import Filter from "./Filter"
 
 function ListingContainer(){
     const [user,setUser] = useState([])
@@ -32,19 +33,25 @@ function ListingContainer(){
            return( listing.neighborhood)
        })
       const distinctNeighborhoods = [...new Set(listingNeighborhoods)]
-      console.log(listingNeighborhoods)
-       console.log(distinctNeighborhoods)
+    //   console.log(listingNeighborhoods)
+    //    console.log(distinctNeighborhoods)
 
        const NeighborhoodList = listingNeighborhoods.map((neighborhood) =>{
            return(
                <ListingNeighborhoods neighborhood = {neighborhood} />
            )
        })
-       
+       function filterSearch({price,bedrooms,bathrooms,neighborhoods}){
+           console.log(price)
+           console.log(bedrooms)
+           console.log(bathrooms)
+           console.log(neighborhoods)
+       }
 
     return(
         <div>
             <h1>Welcome {user.username}</h1>
+            <Filter filterSearch = {filterSearch} distinctNeighborhoods = {distinctNeighborhoods}/>
        {listedApartments}
        {NeighborhoodList}
        </div>

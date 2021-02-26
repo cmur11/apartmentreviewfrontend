@@ -2,8 +2,11 @@ import react, {useState} from "react"
 // import { Card, Icon } from 'semantic-ui-react'
 
 function ListingCards({listing, user}){
-    console.log(listing)
+    // console.log(listing)
     // console.log(user)
+    console.log(listing.photos)
+    let x = listing.photos
+    
     return(
         <>
         <div className = "listing">
@@ -12,7 +15,8 @@ function ListingCards({listing, user}){
             <p>Bedrooms:{listing.bedrooms}</p>
             <p>Bathrooms:{listing.bedrooms}</p>
             <p>Sqft:{listing.sqft}</p>
-            <img src = {listing.photos}/>
+            <p>Neighborhood: {listing.neighborhood}</p>
+            <img alt = {listing.address} src = {listing.photos}/>
         </div>
         </>
     )
