@@ -45,13 +45,13 @@ function Filter({filterSearch, distinctNeighborhoods}){
             </select>
 
 
-        <label className = "priceLabel" >Price:</label>
+        <label className = "priceLabel" >Max Price:</label>
         <select class = "Price" onChange = {(e) => setPrice(e.target.value)}>
         <option value = "All"> </option>
         <option value = "800">$800</option>
-        <option value = "1000">$1,000+</option>
-        <option value = "1200">$1,200+</option>
-        <option value = "1500">$1,500+</option>
+        <option value = "1000">$1,000</option>
+        <option value = "1200">$1,200</option>
+        <option value = "1500">$1,500</option>
         </select>
         <input type = "submit"/>
         

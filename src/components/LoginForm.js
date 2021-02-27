@@ -28,7 +28,7 @@ function LoginForm({handleLogin}){
         {/* <Header as='h1' color="grey">Sign In</Header> */}
         <form 
         //  onSubmit={handleSubmit}
-          href="/home"
+          href="/welcome"
           className="login-form"
           
         >
@@ -46,7 +46,7 @@ function LoginForm({handleLogin}){
               placeholder="Password" 
               onChange={(e) => (setPassword(e.target.value))} 
             />
-          <Link to="/home">
+          <Link to="/welcome">
 
            <button animated
             type="submit"
