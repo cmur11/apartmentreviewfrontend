@@ -2,11 +2,17 @@ import react, {useState, useEffect} from "react"
 import ListingNeighborhoods from "./ListingNeighborhoods"
 import ListingCards from "./ListingCards"
 import Filter from "./Filter"
+import OneListing from "./OneListing"
 
-function ListingContainer({city, setCity}){
+function ListingContainer({city, setCity,oneApartment}){
     const [user,setUser] = useState([])
     const [listings,setListings] = useState([])
-    //  console.log(user)
+    const [bathroomFilter, setBathroomFilter] = useState("")
+    const [bedroomFilter, setBedroomFilter] = useState("")
+    const [priceFilter, setPriceFilter] = useState("")
+    const [neighborhoodFilter, setNeighborhoodFilter] = useState([])
+
+  
      
      
      useEffect(()=> {
@@ -22,23 +28,24 @@ function ListingContainer({city, setCity}){
        }, [])
 
        const filteredWithCity = listings.filter((listing) => listing.city == city)
-       console.log(filteredWithCity)
+    //    console.log(filteredWithCity)
 
-    //    const filteredForSearch = filteredWithCity.filter((listing) => listing.price <= price && listing.bedroom >= bedroom && listing.bathroom >= bathroom )
-
+       const filteredForSearch = filteredWithCity.filter((listing) => (listing.bedrooms >= bedroomFilter && listing.bathrooms >= bathroomFilter && listing.price < priceFilter && listing.neighborhood.includes(neighborhoodFilter)))
+    //    console.log(filteredForSearch)
+    // listing bathrooms not working
 
        const listedApartments = filteredWithCity.map((listing) => {
            return(
-               <ListingCards listing = {listing} key = {listing.id} user = {user}/>
+               <ListingCards listing = {listing} key = {listing.id} user = {user} />
+           
            )
        })
-    //    listings.uniq(&:neighborhood)
+  
        const listingNeighborhoods = listings.map((listing) => {
            return( listing.neighborhood)
        })
       const distinctNeighborhoods = [...new Set(listingNeighborhoods)]
-    //   console.log(listingNeighborhoods)
-    //    console.log(distinctNeighborhoods)
+    
 
        const NeighborhoodList = listingNeighborhoods.map((neighborhood) =>{
            return(
@@ -46,10 +53,14 @@ function ListingContainer({city, setCity}){
            )
        })
        function filterSearch({price,bedrooms,bathrooms,neighborhoods}){
-           console.log(price)
-           console.log(bedrooms)
+            setBathroomFilter(bathrooms)
+            setBedroomFilter(bedrooms)
+            setPriceFilter(price)
+            setNeighborhoodFilter(neighborhoods)
+        //    console.log(price)
+        //    console.log(bedrooms)
            console.log(bathrooms)
-           console.log(neighborhoods)
+        //    console.log(neighborhoods)
        }
 
     return(
@@ -60,7 +71,10 @@ function ListingContainer({city, setCity}){
             <p onClick = {(e) => setCity("Boston")}>Boston</p>
             <p onClick = {(e) => setCity("Los Angeles")}>Los Angeles</p>
             <p onClick = {(e) => setCity("Manhattan")}>New York</p>
+            {/* {chosenApartment ?
+            <OneListing listing = {chosenApartment} />: */}
        {listedApartments}
+            {/* } */}
        {/* {NeighborhoodList} */}
 
        </div>

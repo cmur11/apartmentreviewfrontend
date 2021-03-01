@@ -1,15 +1,23 @@
 // import logo from './logo.svg';
-import react, {useState, useEffect} from "react"
+import react, {useState} from "react"
 import Cities from "./Cities"
 import LoginForm from "./LoginForm"
 import ListingContainer from "./ListingContainer.js"
-import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
+import OneListing from "./OneListing"
+import {Route, BrowserRouter as Router, Link} from "react-router-dom";
 import '../App.css';
 
 function App() {
  const [city, setCity] = useState("")
+//  const [chosenApartment, setChosenApartment] = useState([])
 
 
+//  function oneApartment(listing){
+//    <Link to = "/apartment">
+
+//      setChosenApartment(listing)
+//    </Link>
+//  }
 console.log(city)
 
   return (
@@ -22,9 +30,14 @@ console.log(city)
           <Cities setCity = {setCity}/>
         </Route>
         <Route exact path="/home">
-          <ListingContainer city = {city} setCity = {setCity}/>
+          <ListingContainer city = {city} setCity = {setCity} />
         </Route>
+       <Route exact path = "/apartment/:id">
+        <OneListing />
+       </Route>
       </Router>
+      {/* chosenApartment = {chosenApartment} */}
+      {/* {chosenApartment ?  <OneListing chosenApartment = {chosenApartment}/> :<ListingContainer city = {city} setCity = {setCity} oneApartment = {oneApartment}/>} */}
     </div>
   );
 }

@@ -8,6 +8,8 @@ function Filter({filterSearch, distinctNeighborhoods}){
     function handleSubmit(e){
         e.preventDefault()
         filterSearch({price,bedrooms,bathrooms,neighborhoods})
+
+        
         // console.log(neighborhoods)
   
     }
@@ -22,14 +24,14 @@ function Filter({filterSearch, distinctNeighborhoods}){
 <form className = "filter form" onSubmit = {(e) =>handleSubmit(e)}> 
         <label className = "bathroomLabel">Bathrooms:  </label>
         <select onChange = {(e) => setBathrooms(e.target.value)} class = "Bathrooms">
-            <option value = "All"> </option>
+            <option value = "0"> </option>
             <option value = "1">1+</option>
             <option value = "2">2+</option>
             <option value = "3">3+</option>
         </select>
         <label className = "bedroomLabel" >Bedrooms:  </label>
         <select class = "Bedrooms" onChange = {(e) => setBedrooms(e.target.value)}>
-            <option value = "All"> </option>
+            <option value = "0"> </option>
             <option value = "0">Studio</option>
             <option value = "1">1+</option>
             <option value = "2">2+</option>
@@ -47,11 +49,19 @@ function Filter({filterSearch, distinctNeighborhoods}){
 
         <label className = "priceLabel" >Max Price:</label>
         <select class = "Price" onChange = {(e) => setPrice(e.target.value)}>
-        <option value = "All"> </option>
-        <option value = "800">$800</option>
+        <option value = "10000000"> </option>
+        <option value = "750">$750</option>
         <option value = "1000">$1,000</option>
-        <option value = "1200">$1,200</option>
+        <option value = "1200">$1,250</option>
         <option value = "1500">$1,500</option>
+        <option value = "1750">$1,750</option>
+        <option value = "2000">$2,000</option>
+        <option value = "2250">$2,250</option>
+        <option value = "2500">$2,500</option>
+        <option value = "2750">$2,750</option>
+        <option value = "3000">$3,000</option>
+        <option value = "3250">$3,250</option>
+        <option value = "200000">$200,000</option>
         </select>
         <input type = "submit"/>
         
