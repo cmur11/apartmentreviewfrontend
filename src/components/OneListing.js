@@ -8,13 +8,14 @@ function OneListing(){
     // const {listing} = useParams()
     // console.log(listing)
     const [listing, setListing] = useState({reviews: []})
+    
     useEffect(()=> {
         fetch(`http://localhost:3000/listings/${id}`)
         .then(res => res.json())
         .then((listing) => setListing(listing))
        }, [])
 
-      const reviewForListing = <Review listing = {listing}/>
+      const reviewForListing = <Review listing = {listing} setListing = {setListing} key ={listing.id}/>
     return(
 <>
 

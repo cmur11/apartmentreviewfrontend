@@ -1,10 +1,10 @@
 import react, {useState} from "react"
-function ReviewForm({listing}){
-        const [newReview, setNewReview] = useState("")
-        const [newRating, setNewRating] = useState("")
+function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,setNewRating}){
+        // const [newReview, setNewReview] = useState("")
+        // const [newRating, setNewRating] = useState("")
     function handleSubmit(e){
         e.preventDefault()
-        console.log(newReview, newRating)
+        // console.log(newReview, newRating)
         fetch('http://localhost:3000/reviews', {
         method: 'POST', 
         headers: {
@@ -18,8 +18,8 @@ function ReviewForm({listing}){
         }),
         })
         .then(response => response.json())
-        .then(data => {
-        console.log('Success:', data);
+        .then(newReview => {
+       renderNewReview(newReview);
         })
 
     }
