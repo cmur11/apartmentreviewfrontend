@@ -39,8 +39,8 @@ function ListingCards({listing, user, oneApartment}){
     
     {/* {chosenApartment ?      */}
     {/* {handleRender}  : */}
-    // console.log(listing.photos)
-    // console.log(listing.photos.split(' '))
+    console.log(JSON.parse(listing.photos)[0])
+    // console.log(listing.photos.split('[')[1])
     return(
         
    
@@ -57,7 +57,7 @@ function ListingCards({listing, user, oneApartment}){
               <p>Bathrooms:{listing.bedrooms}</p>
               <p>Sqft:{listing.sqft}</p>
               <p>Neighborhood: {listing.neighborhood}</p>
-              <img onClick = {(e) => handleClick(listing)} alt = {listing.address} src = {listing.photos}/>
+              <img onClick = {(e) => handleClick(listing)} alt = {listing.address} src = {JSON.parse(listing.photos)[0]}/>
               
         </div>)
 
