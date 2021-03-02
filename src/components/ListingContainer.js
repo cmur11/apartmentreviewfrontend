@@ -41,7 +41,7 @@ function ListingContainer({city, setCity,oneApartment}){
            )
        })
   
-       const listingNeighborhoods = listings.map((listing) => {
+       const listingNeighborhoods = filteredWithCity.map((listing) => {
            return( listing.neighborhood)
        })
       const distinctNeighborhoods = [...new Set(listingNeighborhoods)]

@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import react, {useState} from "react"
+import Navbar from "./Navbar"
 import Cities from "./Cities"
 import LoginForm from "./LoginForm"
 import ListingContainer from "./ListingContainer.js"
@@ -22,6 +23,7 @@ console.log(city)
 
   return (
     <div className="App">
+      <Navbar/>
       <Router>
         <Route exact path="/login">
           <LoginForm />

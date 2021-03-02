@@ -23,14 +23,14 @@ function Filter({filterSearch, distinctNeighborhoods}){
 
 <form className = "filter form" onSubmit = {(e) =>handleSubmit(e)}> 
         <label className = "bathroomLabel">Bathrooms:  </label>
-        <select onChange = {(e) => setBathrooms(e.target.value)} class = "Bathrooms">
+        <select onChange = {(e) => setBathrooms(e.target.value)} className = "Bathrooms">
             <option value = "0"> </option>
             <option value = "1">1+</option>
             <option value = "2">2+</option>
             <option value = "3">3+</option>
         </select>
         <label className = "bedroomLabel" >Bedrooms:  </label>
-        <select class = "Bedrooms" onChange = {(e) => setBedrooms(e.target.value)}>
+        <select className = "Bedrooms" onChange = {(e) => setBedrooms(e.target.value)}>
             <option value = "0"> </option>
             <option value = "0">Studio</option>
             <option value = "1">1+</option>
@@ -40,7 +40,7 @@ function Filter({filterSearch, distinctNeighborhoods}){
         {/* <br></br> */}
 
         <label className = "neighborhoodLabel">Neighborhood:</label>
-            <select class = "Neighborhood" onChange = {(e) => setNeighborhoods(e.target.value)}>
+            <select className = "Neighborhood" onChange = {(e) => setNeighborhoods(e.target.value)}>
             <option value = "All"> </option>
             {neighborhoodSelect}
                 
@@ -48,7 +48,7 @@ function Filter({filterSearch, distinctNeighborhoods}){
 
 
         <label className = "priceLabel" >Max Price:</label>
-        <select class = "Price" onChange = {(e) => setPrice(e.target.value)}>
+        <select className = "Price" onChange = {(e) => setPrice(e.target.value)}>
         <option value = "10000000"> </option>
         <option value = "750">$750</option>
         <option value = "1000">$1,000</option>
