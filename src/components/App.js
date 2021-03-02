@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import react, {useState} from "react"
 import Navbar from "./Navbar"
+import SavedListingsContainer from "./SavedListingsContainer"
 import Cities from "./Cities"
 import LoginForm from "./LoginForm"
 import ListingContainer from "./ListingContainer.js"
@@ -36,6 +37,9 @@ console.log(city)
         </Route>
        <Route exact path = "/apartment/:id">
         <OneListing />
+       </Route>
+       <Route exact path = "/saved_listings">
+        <SavedListingsContainer />
        </Route>
       </Router>
       {/* chosenApartment = {chosenApartment} */}

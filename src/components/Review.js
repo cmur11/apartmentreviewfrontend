@@ -18,7 +18,7 @@ function Review({listing,setListing}){
     )
    
     function renderNewReview(newReview){
-        setListing({...listing,[listing.reviews]:newReview})
+        setListing({...listing,reviews:[...listing.reviews,newReview]})
     }
     
     return(

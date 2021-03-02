@@ -8,7 +8,9 @@ function OneListing(){
     // const {listing} = useParams()
     // console.log(listing)
     const [listing, setListing] = useState({reviews: []})
-    
+    const [saved, setSaved] = useState(false)
+    const [button, setButton] = ("Save to your Listing")
+
     useEffect(()=> {
         fetch(`http://localhost:3000/listings/${id}`)
         .then(res => res.json())
@@ -16,6 +18,29 @@ function OneListing(){
        }, [])
 
       const reviewForListing = <Review listing = {listing} setListing = {setListing} key ={listing.id}/>
+
+
+       function handleSave(e){
+        //   setButton("Already saved!")
+        //    setSaved(true)
+        fetch('http://localhost:3000/saved_listings', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            body: JSON.stringify({
+                listing_id: listing.id,
+                user_id: 1,
+                price: listing.price,
+                
+            }),
+            })
+            .then(response => response.json())
+            .then(newSavedListing => {
+           console.log(newSavedListing);
+            })
+       }
+
     return(
 <>
 
@@ -27,6 +52,9 @@ function OneListing(){
             <p>Sqft:{listing.sqft}</p>
             <p>Neighborhood: {listing.neighborhood}</p>
             <img  alt = {listing.address} src = {listing.photos}/>
+    </div>
+    <div className = "saveforLaterButton">
+        <button onClick = {(e) => {handleSave()}}>Save Listing</button>
     </div>
     <div>
        {reviewForListing}

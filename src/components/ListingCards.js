@@ -49,13 +49,14 @@ function ListingCards({listing, user, oneApartment}){
                 <p>View this place</p>
                </Link>
 
-                 <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
+              <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
               <h5>${listing.price}</h5>
               <p>Bedrooms:{listing.bedrooms}</p>
               <p>Bathrooms:{listing.bedrooms}</p>
               <p>Sqft:{listing.sqft}</p>
               <p>Neighborhood: {listing.neighborhood}</p>
               <img onClick = {(e) => handleClick(listing)} alt = {listing.address} src = {listing.photos}/>
+              
         </div>)
 
         
