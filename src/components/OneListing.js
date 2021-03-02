@@ -56,6 +56,10 @@ function OneListing(){
     <div className = "saveforLaterButton">
         <button onClick = {(e) => {handleSave()}}>Save Listing</button>
     </div>
+    <br></br>
+    <div className = "applyToListing">
+        <button>Apply To Listing</button>
+    </div>
     <div>
        {reviewForListing}
     </div>
