@@ -7,13 +7,13 @@ import OneListing from "./OneListing"
 function ListingContainer({city, setCity,oneApartment}){
     const [user,setUser] = useState([])
     const [listings,setListings] = useState([])
-    const [bathroomFilter, setBathroomFilter] = useState("")
-    const [bedroomFilter, setBedroomFilter] = useState("")
-    const [priceFilter, setPriceFilter] = useState("")
+    const [bathroomFilter, setBathroomFilter] = useState(0)
+    const [bedroomFilter, setBedroomFilter] = useState(0)
+    const [priceFilter, setPriceFilter] = useState(1000000)
     const [neighborhoodFilter, setNeighborhoodFilter] = useState([])
 
   
-     
+     console.log(bathroomFilter,bedroomFilter,priceFilter)
      
      useEffect(()=> {
      fetch('http://localhost:3000/users')
@@ -31,27 +31,28 @@ function ListingContainer({city, setCity,oneApartment}){
     //    console.log(filteredWithCity)
 
        const filteredForSearch = filteredWithCity.filter((listing) => (listing.bedrooms >= bedroomFilter && listing.bathrooms >= bathroomFilter && listing.price < priceFilter && listing.neighborhood.includes(neighborhoodFilter)))
-    //    console.log(filteredForSearch)
+       console.log(filteredForSearch)
     // listing bathrooms not working
 
-       const listedApartments = filteredWithCity.map((listing) => {
+       const listedApartments = filteredForSearch.map((listing) => {
            return(
                <ListingCards listing = {listing} key = {listing.id} user = {user} />
            
            )
        })
   
-       const listingNeighborhoods = filteredWithCity.map((listing) => {
-           return( listing.neighborhood)
-       })
-      const distinctNeighborhoods = [...new Set(listingNeighborhoods)]
-    
+        const listingNeighborhoods = filteredWithCity.map((listing) => {
+            return( listing.neighborhood)
+        })
+        const distinctNeighborhoods = [...new Set(listingNeighborhoods)]
+        
 
-       const NeighborhoodList = listingNeighborhoods.map((neighborhood) =>{
-           return(
-               <ListingNeighborhoods neighborhood = {neighborhood} />
-           )
-       })
+        const NeighborhoodList = listingNeighborhoods.map((neighborhood) =>{
+            return(
+                <ListingNeighborhoods neighborhood = {neighborhood} />
+            )
+        })
+
        function filterSearch({price,bedrooms,bathrooms,neighborhoods}){
             setBathroomFilter(bathrooms)
             setBedroomFilter(bedrooms)
@@ -59,7 +60,7 @@ function ListingContainer({city, setCity,oneApartment}){
             setNeighborhoodFilter(neighborhoods)
         //    console.log(price)
         //    console.log(bedrooms)
-           console.log(bathrooms)
+        //    console.log(price,bedrooms,bathrooms,neighborhoods)
         //    console.log(neighborhoods)
        }
 

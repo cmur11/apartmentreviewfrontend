@@ -41,6 +41,32 @@ function OneListing(){
             })
        }
 
+       function handleApply(e){
+        //   setButton("Already saved!")
+        //    setSaved(true)
+        fetch('http://localhost:3000/applied_listings', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            body: JSON.stringify({
+                listing_id: listing.id,
+                user_id: 1,
+                
+            }),
+            })
+            .then(response => response.json())
+            .then(newAppliedListing => {
+           console.log(newAppliedListing);
+            })
+       }
+
+
+
+
+
+
+
     return(
 <>
 
@@ -58,7 +84,7 @@ function OneListing(){
     </div>
     <br></br>
     <div className = "applyToListing">
-        <button>Apply To Listing</button>
+        <button onClick = {(e) => {handleApply()}}>Apply To Listing</button>
     </div>
     <div>
        {reviewForListing}

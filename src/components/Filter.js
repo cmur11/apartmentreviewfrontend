@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 function Filter({filterSearch, distinctNeighborhoods}){
-    const [bathrooms, setBathrooms] = useState("All")
-    const [bedrooms, setBedrooms] = useState("All")
-    const [price, setPrice] = useState("All")
+    const [bathrooms, setBathrooms] = useState(0)
+    const [bedrooms, setBedrooms] = useState(0)
+    const [price, setPrice] = useState(10000000)
     const [neighborhoods, setNeighborhoods] = useState("")
     function handleSubmit(e){
         e.preventDefault()
@@ -41,7 +41,7 @@ function Filter({filterSearch, distinctNeighborhoods}){
 
         <label className = "neighborhoodLabel">Neighborhood:</label>
             <select className = "Neighborhood" onChange = {(e) => setNeighborhoods(e.target.value)}>
-            <option value = "All"> </option>
+            <option value = ""> </option>
             {neighborhoodSelect}
                 
             </select>

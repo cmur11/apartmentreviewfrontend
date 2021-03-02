@@ -12,11 +12,11 @@ function ListingCards({listing, user, oneApartment}){
     // function handleRender(listing){
     //      return(
           const arrayOfReviews = listing.reviews.map((review) => review.rating)
-          console.log(arrayOfReviews)
+         // console.log(arrayOfReviews)
           const length = arrayOfReviews.length
 
         //   const sum = arrayOfReviews.reduce((a,b) => (a+ b))
-          console.log(length)
+         // console.log(length)
    
     //       <div> 
     //           <OneListing listing = {listing} key = {listing.id}/>  
@@ -36,9 +36,11 @@ function ListingCards({listing, user, oneApartment}){
         // )
     }
       
-   
+    
     {/* {chosenApartment ?      */}
     {/* {handleRender}  : */}
+    // console.log(listing.photos)
+    // console.log(listing.photos.split(' '))
     return(
         
    
@@ -50,7 +52,7 @@ function ListingCards({listing, user, oneApartment}){
                </Link>
 
               <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
-              <h5>${listing.price}</h5>
+              <h5>Price:${listing.price}</h5>
               <p>Bedrooms:{listing.bedrooms}</p>
               <p>Bathrooms:{listing.bedrooms}</p>
               <p>Sqft:{listing.sqft}</p>
