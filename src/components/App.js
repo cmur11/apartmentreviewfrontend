@@ -6,8 +6,10 @@ import Cities from "./Cities"
 import LoginForm from "./LoginForm"
 import ListingContainer from "./ListingContainer.js"
 import OneListing from "./OneListing"
+import AppliedListings from "./AppliedListings"
 import {Route, BrowserRouter as Router, Link} from "react-router-dom";
 import '../App.css';
+
 
 function App() {
  const [city, setCity] = useState("")
@@ -27,7 +29,7 @@ console.log(city)
       <Router>
       <Route>
 
-      <Navbar/>
+      <Navbar city = {city}/>
       </Route>
         <Route exact path="/login">
           <LoginForm />
@@ -35,7 +37,7 @@ console.log(city)
         <Route exact path = "/welcome">
           <Cities setCity = {setCity}/>
         </Route>
-        <Route exact path="/home">
+        <Route exact path= "/home/">
           <ListingContainer city = {city} setCity = {setCity} />
         </Route>
        <Route exact path = "/apartment/:id">
@@ -43,6 +45,9 @@ console.log(city)
        </Route>
        <Route exact path = "/saved_listings">
         <SavedListingsContainer />
+       </Route>
+       <Route exact path = "/applied_listings">
+        <AppliedListings />
        </Route>
       </Router>
       {/* chosenApartment = {chosenApartment} */}

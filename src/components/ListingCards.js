@@ -8,22 +8,24 @@ function ListingCards({listing, user, oneApartment}){
     // console.log(listing
     const [chosenApartment , setChosenApartment] = useState([])
     const [sum, setSum] = useState()
+    const [average, setAverage] = useState("No Reviews")
     // console.log(user)
     // function handleRender(listing){
     //      return(
-          const arrayOfReviews = listing.reviews.map((review) => review.rating)
-         // console.log(arrayOfReviews)
-          const length = arrayOfReviews.length
-
-        //   const sum = arrayOfReviews.reduce((a,b) => (a+ b))
-         // console.log(length)
-   
-    //       <div> 
-    //           <OneListing listing = {listing} key = {listing.id}/>  
-    //           </div>
-
-    //     )
-    // }
+        //   const arrayOfReviews = listing.reviews.filter((review) => review.rating > 1)
+        //  console.log(listing.reviews)
+        //   const length = arrayOfReviews.length
+        getAverage()
+   function getAverage(){
+       if (listing.reviews.length > 1){
+           console.log(listing.reviews)
+        const arrayOfReviews = listing.reviews.map((review) => review.rating )
+        console.log(arrayOfReviews)
+        // console.log(arrayOfReviews,arrayOfReviews.length)
+        setAverage(arrayOfReviews.reduce((a, b) => a + b, 0) / arrayOfReviews.length)
+        console.log(average)
+       }
+   }
     
     function handleClick(listing){
     //   console.log(listing)
@@ -39,7 +41,7 @@ function ListingCards({listing, user, oneApartment}){
     
     {/* {chosenApartment ?      */}
     {/* {handleRender}  : */}
-    console.log(JSON.parse(listing.photos)[0])
+    // console.log(JSON.parse(listing.photos)[0])
     // console.log(listing.photos.split('[')[1])
     return(
         
