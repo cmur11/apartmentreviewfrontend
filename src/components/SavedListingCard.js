@@ -27,7 +27,7 @@ function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
         <p>Bathrooms:{saved_listing.listing.bedrooms}</p>
         <p>Sqft:{saved_listing.listing.sqft}</p>
         <p>Neighborhood: {saved_listing.listing.neighborhood}</p>
-        <img alt = {saved_listing.listing.address} src = {saved_listing.listing.photos}/>
+        <img alt = {saved_listing.listing.address} src = {JSON.parse(saved_listing.listing.photos)[0]}/>
         <br></br>
         <br></br>
         <button onClick = {(e) => {removeListing()}}>Remove Listing</button>

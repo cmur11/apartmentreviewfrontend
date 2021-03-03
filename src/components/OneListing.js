@@ -64,8 +64,8 @@ function OneListing(){
 
 
 
-
-
+    //    const photos = JSON.parse(listing.photos)[0]
+    //    console.log(photos)
 
     return(
 <>

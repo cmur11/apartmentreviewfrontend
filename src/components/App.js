@@ -24,8 +24,11 @@ console.log(city)
 
   return (
     <div className="App">
-      <Navbar/>
       <Router>
+      <Route>
+
+      <Navbar/>
+      </Route>
         <Route exact path="/login">
           <LoginForm />
         </Route>
