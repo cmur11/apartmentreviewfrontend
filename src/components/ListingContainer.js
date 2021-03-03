@@ -4,8 +4,8 @@ import ListingCards from "./ListingCards"
 import Filter from "./Filter"
 import OneListing from "./OneListing"
 
-function ListingContainer({city, setCity,oneApartment}){
-    const [user,setUser] = useState([])
+function ListingContainer({city, setCity,oneApartment, user}){
+    // const [user,setUser] = useState([])
     const [listings,setListings] = useState([])
     const [bathroomFilter, setBathroomFilter] = useState(0)
     const [bedroomFilter, setBedroomFilter] = useState(0)
@@ -15,11 +15,11 @@ function ListingContainer({city, setCity,oneApartment}){
   
      console.log(bathroomFilter,bedroomFilter,priceFilter)
      
-     useEffect(()=> {
-     fetch('http://localhost:3000/users')
-     .then(res => res.json())
-     .then((users) => setUser(users[0]))
-    }, [])
+    //  useEffect(()=> {
+    //  fetch('http://localhost:3000/users')
+    //  .then(res => res.json())
+    //  .then((users) => setUser(users[0]))
+    // }, [])
 
     useEffect(()=> {
         fetch('http://localhost:3000/listings')

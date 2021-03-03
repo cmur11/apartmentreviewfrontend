@@ -22,7 +22,7 @@ function ListingCards({listing, user, oneApartment}){
         const arrayOfReviews = listing.reviews.map((review) => review.rating )
         console.log(arrayOfReviews)
         // console.log(arrayOfReviews,arrayOfReviews.length)
-        setAverage(arrayOfReviews.reduce((a, b) => a + b, 0) / arrayOfReviews.length)
+        // setAverage(arrayOfReviews.reduce((a, b) => a + b, 0) / arrayOfReviews.length)
         console.log(average)
        }
    }

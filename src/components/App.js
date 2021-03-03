@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import react, {useState} from "react"
+import react, {useState, useEffect} from "react"
 import Navbar from "./Navbar"
 import SavedListingsContainer from "./SavedListingsContainer"
 import Cities from "./Cities"
@@ -13,16 +13,15 @@ import '../App.css';
 
 function App() {
  const [city, setCity] = useState("")
+ const [user,setUser] = useState([])
 //  const [chosenApartment, setChosenApartment] = useState([])
 
 
-//  function oneApartment(listing){
-//    <Link to = "/apartment">
-
-//      setChosenApartment(listing)
-//    </Link>
-//  }
-console.log(city)
+useEffect(()=> {
+  fetch('http://localhost:3000/users')
+  .then(res => res.json())
+  .then((users) => setUser(users[0]))
+ }, [])
 
   return (
     <div className="App">
@@ -38,10 +37,10 @@ console.log(city)
           <Cities setCity = {setCity}/>
         </Route>
         <Route exact path= "/home/">
-          <ListingContainer city = {city} setCity = {setCity} />
+          <ListingContainer city = {city} setCity = {setCity} user = {user} />
         </Route>
        <Route exact path = "/apartment/:id">
-        <OneListing />
+        <OneListing user = {user}/>
        </Route>
        <Route exact path = "/saved_listings">
         <SavedListingsContainer />
@@ -59,17 +58,3 @@ console.log(city)
 export default App;
 
 
-{/* <header className="App-header">
-{/* <img src={logo} className="App-logo" alt="logo" /> */}
-{/* <p>
-  Edit <code>src/App.js</code> and save to reload.
-</p>
-<a
-  className="App-link"
-  href="https://reactjs.org"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Learn React
-</a>
-// </header> */} 
