@@ -4,10 +4,12 @@ function ReviewCard ({review, user, handleUpdatedReview}){
     const [userId, setUserId] = useState(false)
     const [checked,setChecked] = useState(false)
     const [update,setUpdate] = useState(false)
-
+    
 
     const [reviewContent, setReviewContent] = useState(review.comment)
     const [reviewRating, setReviewRating] = useState(review.rating)
+
+   
 
 
     // console.log(userId, checked)
@@ -24,7 +26,7 @@ function ReviewCard ({review, user, handleUpdatedReview}){
 
     function handleUpdate(e){
         e.preventDefault()
-        console.log(reviewContent,reviewRating)
+       // console.log(reviewContent,reviewRating)
 
         fetch(`http://localhost:3000/reviews/${review.id}`, {
             method: 'PATCH',

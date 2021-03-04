@@ -9,6 +9,8 @@ function ListingCards({listing, user, oneApartment}){
     const [chosenApartment , setChosenApartment] = useState([])
     const [sum, setSum] = useState()
     const [average, setAverage] = useState("No Reviews")
+ 
+
     // console.log(user)
     // function handleRender(listing){
     //      return(

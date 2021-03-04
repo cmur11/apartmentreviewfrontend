@@ -8,8 +8,8 @@ function Review({listing,setListing, user }){
 //    const [reviews,setReviews] = useState(listing.reviews)
     // console.log(reviews)
 //    console.log(listing.reviews)
-   console.log(listing)
-   console.log(listing.reviews)
+//    console.log(listing)
+//    console.log(listing.reviews)
    function handleUpdatedReview(review){
 
         console.log(listing.reviews)
@@ -24,7 +24,7 @@ function Review({listing,setListing, user }){
             // console.log(updatedListingWithReview)
             setListing(updatedListing)
     }
-    console.log(listing)
+    // console.log(listing)
  
     const reviewRender = listing.reviews.map((review) =>{
         return(

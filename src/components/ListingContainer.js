@@ -13,7 +13,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
     const [neighborhoodFilter, setNeighborhoodFilter] = useState([])
 
   
-     console.log(bathroomFilter,bedroomFilter,priceFilter)
+    //  console.log(bathroomFilter,bedroomFilter,priceFilter)
      
     //  useEffect(()=> {
     //  fetch('http://localhost:3000/users')
@@ -31,7 +31,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
     //    console.log(filteredWithCity)
 
        const filteredForSearch = filteredWithCity.filter((listing) => (listing.bedrooms >= bedroomFilter && listing.bathrooms >= bathroomFilter && listing.price < priceFilter && listing.neighborhood.includes(neighborhoodFilter)))
-       console.log(filteredForSearch)
+    //    console.log(filteredForSearch)
     // listing bathrooms not working
 
        const listedApartments = filteredForSearch.map((listing) => {
@@ -64,6 +64,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
         //    console.log(neighborhoods)
        }
 
+       //console.log(filteredForSearch.length)
     return(
         <div>
             <h1>Welcome {user.username}</h1>
@@ -74,6 +75,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
             <p onClick = {(e) => setCity("Manhattan")}>New York</p>
             {/* {chosenApartment ?
             <OneListing listing = {chosenApartment} />: */}
+            <h2>Results: {filteredForSearch.length}</h2>
        {listedApartments}
             {/* } */}
        {/* {NeighborhoodList} */}
