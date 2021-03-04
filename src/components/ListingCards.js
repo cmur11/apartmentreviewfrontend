@@ -8,7 +8,7 @@ function ListingCards({listing, user, oneApartment}){
     // console.log(listing
     const [chosenApartment , setChosenApartment] = useState([])
     const [sum, setSum] = useState()
-    const [average, setAverage] = useState("No Reviews")
+    const [average, setAverage] = useState(listing.average)
  
 
     // console.log(user)
@@ -20,12 +20,12 @@ function ListingCards({listing, user, oneApartment}){
         getAverage()
    function getAverage(){
        if (listing.reviews.length > 1){
-           console.log(listing.reviews)
+        //    console.log(listing.reviews)
         const arrayOfReviews = listing.reviews.map((review) => review.rating )
-        console.log(arrayOfReviews)
+        // console.log(arrayOfReviews)
         // console.log(arrayOfReviews,arrayOfReviews.length)
         // setAverage(arrayOfReviews.reduce((a, b) => a + b, 0) / arrayOfReviews.length)
-        console.log(average)
+        // console.log(average)
        }
    }
     
@@ -43,8 +43,10 @@ function ListingCards({listing, user, oneApartment}){
     
     {/* {chosenApartment ?      */}
     {/* {handleRender}  : */}
-    // console.log(JSON.parse(listing.photos)[0])
+    console.log(JSON.parse(listing.photos)[0])
+    console.log(JSON.parse(listing.photos))
     // console.log(listing.photos.split('[')[1])
+    // console.log(listing.applied_listings)
     return(
         
    
@@ -54,7 +56,7 @@ function ListingCards({listing, user, oneApartment}){
               <Link to =  {`/apartment/${listing.id}`}>
                 <p>View this place</p>
                </Link>
-
+               <h4>Average Rating: {average}</h4> 
               <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
               <h5>Price:${listing.price}</h5>
               <p>Bedrooms:{listing.bedrooms}</p>

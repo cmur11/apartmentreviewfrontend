@@ -9,40 +9,49 @@ function OneListing({user}){
     const {id} = useParams()
     // const {listing} = useParams()
     // console.log(listing)
-    const [listing, setListing] = useState({reviews: []})
+    const [listing, setListing] = useState(null)
     // const [reviews, setReviews] = useState([])
     const [saved, setSaved] = useState(false)
-    const [applied, setApplied] = useState()
+    const [applied, setApplied] = useState(false)
     const [textBox, setTextBox] = useState(false)
 
-    // console.log(applied)
-    // // console.log(listing.applied_listings[0])
+    console.log(saved)
 
-    function checkApplied(){
-        // debugger
-        if (listing.applied_listings  && applied === false){
-            setApplied(true)
+    if (listing){
+
+        console.log(JSON.parse(listing.photos))
+    }
+   
+    function helper(listing){
+        setListing(listing)
+        setSaved(listing.saved)
+    }
+
+    function validate( ){
+        if (listing.applied_listings && saved == false) {
+            setSaved(true)
         }
+
     }
     
-    // const [button, setButton] = ("Save to your Listing")
     useEffect(()=> {
         fetch(`http://localhost:3000/listings/${id}`)
         .then(res => res.json())
-        .then((listing) => {setListing(listing)})
+        .then((listing) => {helper(listing)})
         
     }, [])
     
-    const reviewForListing = <Review listing = {listing} setListing = {setListing} key ={listing.id} user = {user} />
+    let reviewForListing 
     
-    //    console.log(listing)
-    
-    // console.log(user)
+        if (listing) {
+            reviewForListing = <Review listing = {listing} setListing = {setListing} key ={listing.id} user = {user} />
+        }
+
     
     function handleSave(e){
         //   setButton("Already saved!")
         //    setSaved(true)
-        if (saved === true){
+        if (listing.saved_listings.includes(listing)){
             alert("You've already saved this listing!")
         } else{
             setSaved(true)
@@ -53,7 +62,7 @@ function OneListing({user}){
                 },
                 body: JSON.stringify({
                     listing_id: listing.id,
-                    user_id: 1,
+                    user_id: user.id,
                     price: listing.price,
                     
                 }),
@@ -62,15 +71,30 @@ function OneListing({user}){
             .then(newSavedListing => {
                 console.log(newSavedListing);
             })
-            
-            
+            // console.log(listing.id)
+            fetch(`http://localhost:3000/listings/${listing.id}`, {
+                method: 'PATCH', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    saved: true
+                
+                }),
+            })
+            .then(response => response.json())
+            .then(res => {
+            console.log(res);
+            })
+
         }
         
         
     }
+  
     
     function handleApply(e){
-        
+        //console.log(user)
         if(applied === true ){
             alert( "You've already applied to this listing!")
         }else {
@@ -94,51 +118,67 @@ function OneListing({user}){
         setTextBox(true)
     }
     
+    function handleAlreadySaved(){
+        console.log('hi')
+    }
     
-    console.log(listing)
     
     //    const photos = JSON.parse(listing.photos)[0]
     //    console.log(photos)
+  
+    // if (listing.saved_listings.find(savedListing => savedListing.user_id === user.id)){
+    //     setSaved(true)
+    // }
+
+    if (listing) {
+
+        return( 
+           
+    <>
+        
+            <div  className = "onelisting">
+                <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
+                <h5>${listing.price}</h5>
+                <p>Bedrooms:{listing.bedrooms}</p>
+                <p>Bathrooms:{listing.bedrooms}</p>
+                <p>Sqft:{listing.sqft}</p>
+                <p>Neighborhood: {listing.neighborhood}</p>
+                <img  alt = {listing.address} src = {JSON.parse(listing.photos)}/>
+        </div>
+        {listing.saved_listings.find(savedListing => savedListing.user_id === user.id) ? 
+        <div className = "saveforLaterButton"onClick = {(e) => {handleSave(e)}}>  
+            <button>Listing Saved</button>
+        </div>
+        :
+        <div className = "saveforLaterButton"onClick = {(e) => {handleAlreadySaved(e)}}> 
+         <button>Save Listing</button> 
+         </div> }
+
+        <br></br>
+        <div className = "applyToListing" onClick = {(e) => {handleApply()}}>
+            <button>{applied ? "Broker contacted" : "Apply to Listing"}</button>
+            {/* <button onClick = {(e) => {handleApply()}}>Apply To Listing</button> */}
+        </div>
     
-    return(
+        {textBox ? 
+        <div className = "renderApplyBox">
+          
+        <EmailForm listing = {listing} setTextBox = {setTextBox} /> 
+        </div> 
+        : null }
        
-<>
     
-        <div  className = "onelisting">
-            <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
-            <h5>${listing.price}</h5>
-            <p>Bedrooms:{listing.bedrooms}</p>
-            <p>Bathrooms:{listing.bedrooms}</p>
-            <p>Sqft:{listing.sqft}</p>
-            <p>Neighborhood: {listing.neighborhood}</p>
-            <img  alt = {listing.address} src = {listing.photos}/>
-    </div>
-    <div className = "saveforLaterButton"onClick = {(e) => {handleSave()}}>
-        {saved ? <button>Listing Saved</button> : <button>Save Listing</button>}
-        {/* <button>Save Listing</button> */}
-    </div>
-    <br></br>
-    <div className = "applyToListing" onClick = {(e) => {handleApply()}}>
-        <button>{applied ? "Broker contacted" : "Apply to Listing"}</button>
-        {/* <button onClick = {(e) => {handleApply()}}>Apply To Listing</button> */}
-    </div>
-
-    {textBox ? 
-    <div className = "renderApplyBox">
-      
-    <EmailForm listing = {listing} setTextBox = {setTextBox} /> 
-    </div> 
-    : null }
-   
-
-    <div>
-       {reviewForListing}
-    </div>
-    {/* <div>
-        <EmailForm listing = {listing} />
-    </div> */}
-    </>
-    )
+        <div>
+           {reviewForListing}
+        </div>
+        {/* <div>
+            <EmailForm listing = {listing} />
+        </div> */}
+        </>
+        )
+    } else {
+        return <div>Loading</div>
+    }
 }
 
 export default OneListing;

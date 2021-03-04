@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 function AppliedListing({appliedListing}){
-    console.log(appliedListing)
+   // console.log(appliedListing)
     
     // console.log(appliedListing.created_at.getDate())
   
