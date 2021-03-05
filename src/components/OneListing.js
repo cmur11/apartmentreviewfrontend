@@ -11,13 +11,30 @@ function OneListing({user}){
     // const {listing} = useParams()
     // console.log(listing)
     const [listing, setListing] = useState(null)
+    const [listingPhotos, setListingPhotos] = useState([])
     // const [reviews, setReviews] = useState([])
     const [saved, setSaved] = useState(false)
     const [applied, setApplied] = useState(false)
     const [textBox, setTextBox] = useState(false)
     // const [photos,setPhotos] = useState([]) 
 
-    // console.log(JSON.parse(listing.photos))
+    
+// let imageArr = JSON.parse(listing.photos)
+
+
+    
+    function getPhotos(){
+
+        // if(listing.photos){
+            // let imageArr = JSON.parse(listing.photos)
+            // console.log(imageArr)
+            // imageArr = (JSON.parse(listing.photos))
+            return listingPhotos.map((photo) => {
+                // console.log("PHOTO", photo)
+                return <PhotoCard photo = {photo} />
+            })
+        // }
+    }
 
   
 
@@ -34,7 +51,17 @@ function OneListing({user}){
    
 //    debugger
     function helper(listing){
+        let imageArr = JSON.parse(listing.photos)
+        
+        console.log("LISY", listing);
+
+        let findListing = listing.applied_listings.find(listingJoin => listingJoin.listing_id === listing.id)
+
+        console.log("FOUND LIST", findListing);
+
         setListing(listing)
+        setListingPhotos(imageArr)
+        setApplied(!!findListing)
         // setSaved(listing.saved)
     }
 
@@ -60,7 +87,7 @@ function OneListing({user}){
 
     
     function handleSave(e){
-        //   setButton("Already saved!")
+       
         //    setSaved(true)
         if (listing.saved_listings.includes(listing)){
             alert("You've already saved this listing!")
@@ -142,12 +169,12 @@ function OneListing({user}){
     // }
 
     if (listing) {
-
+       
         return( 
            
     <>
     <div>
-        <PhotoCard photos = {listing.photos} />
+        {getPhotos()}
         </div>
             <div  className = "onelisting">
                 <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
@@ -156,17 +183,14 @@ function OneListing({user}){
                 <p>Bathrooms:{listing.bedrooms}</p>
                 <p>Sqft:{listing.sqft}</p>
                 <p>Neighborhood: {listing.neighborhood}</p>
-                <img  alt = {listing.address} src = {JSON.parse(listing.photos)}/>
+                {/* <img  alt = {listing.address} src = {JSON.parse(listing.photos)}/> */}
         </div>
-        {listing.saved_listings.find(savedListing => savedListing.user_id === user.id) ? 
+        
         <div className = "saveforLaterButton"onClick = {(e) => {handleSave(e)}}>  
-            <button>Listing Saved</button>
+            <button>{saved ? "Already Saved" : "Save Listing"}</button>
         </div>
-        :
-        <div className = "saveforLaterButton"onClick = {(e) => {handleAlreadySaved(e)}}> 
-         <button>Save Listing</button> 
-         </div> }
-
+      
+       
         <br></br>
         <div className = "applyToListing" onClick = {(e) => {handleApply()}}>
             <button>{applied ? "Broker contacted" : "Apply to Listing"}</button>
