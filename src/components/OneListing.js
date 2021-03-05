@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import react, {useState,useEffect} from "react"
 import Review from "./Review"
 import EmailForm from "./EmailForm"
+import PhotoCard from "./PhotoCard"
 import Modal from 'react-modal';
 
 function OneListing({user}){
@@ -14,17 +15,27 @@ function OneListing({user}){
     const [saved, setSaved] = useState(false)
     const [applied, setApplied] = useState(false)
     const [textBox, setTextBox] = useState(false)
+    // const [photos,setPhotos] = useState([]) 
 
-    console.log(saved)
+    // console.log(JSON.parse(listing.photos))
 
-    if (listing){
+  
 
-        console.log(JSON.parse(listing.photos))
-    }
+        let image 
+        if (listing)
+            { image = JSON.parse(listing.photos).map((photo) => {
+
+                return(  <PhotoCard photo = {photo}/>)
+            } )
+            let test = listing.photos
+            let arr = Array.from(test)
+            console.log(arr)
+            }
    
+//    debugger
     function helper(listing){
         setListing(listing)
-        setSaved(listing.saved)
+        // setSaved(listing.saved)
     }
 
     function validate( ){
@@ -135,7 +146,7 @@ function OneListing({user}){
         return( 
            
     <>
-        
+        {image}
             <div  className = "onelisting">
                 <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
                 <h5>${listing.price}</h5>
