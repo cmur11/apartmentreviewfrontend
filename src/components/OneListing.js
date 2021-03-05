@@ -21,16 +21,16 @@ function OneListing({user}){
 
   
 
-        let image 
-        if (listing)
-            { image = JSON.parse(listing.photos).map((photo) => {
+        // let image 
+        // if (listing)
+        //     { image = JSON.parse(listing.photos).map((photo) => {
 
-                return(  <PhotoCard photo = {photo}/>)
-            } )
-            let test = listing.photos
-            let arr = Array.from(test)
-            console.log(arr)
-            }
+        //         return(  <PhotoCard photo = {photo}/>)
+        //     } )
+        //     let test = listing.photos
+        //     let arr = Array.from(test)
+        //     console.log(arr)
+        //     }
    
 //    debugger
     function helper(listing){
@@ -146,7 +146,9 @@ function OneListing({user}){
         return( 
            
     <>
-        {image}
+    <div>
+        <PhotoCard photos = {listing.photos} />
+        </div>
             <div  className = "onelisting">
                 <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
                 <h5>${listing.price}</h5>
