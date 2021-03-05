@@ -57,20 +57,23 @@ function OneListing({user}){
 
         let findListing = listing.applied_listings.find(listingJoin => listingJoin.listing_id === listing.id)
 
+        let findSaved = listing.saved_listings.find(savedListing => savedListing.listing_id === listing.id)
+
         console.log("FOUND LIST", findListing);
+        console.log("save list", findSaved)
 
         setListing(listing)
         setListingPhotos(imageArr)
         setApplied(!!findListing)
-        // setSaved(listing.saved)
+        setSaved(!!findSaved)
     }
 
-    function validate( ){
-        if (listing.applied_listings && saved == false) {
-            setSaved(true)
-        }
+    // function validate( ){
+    //     if (listing.applied_listings && saved == false) {
+    //         setSaved(true)
+    //     }
 
-    }
+    // }
     
     useEffect(()=> {
         fetch(`http://localhost:3000/listings/${id}`)
@@ -89,7 +92,7 @@ function OneListing({user}){
     function handleSave(e){
        
         //    setSaved(true)
-        if (listing.saved_listings.includes(listing)){
+        if (saved === true){
             alert("You've already saved this listing!")
         } else{
             setSaved(true)
@@ -136,6 +139,7 @@ function OneListing({user}){
         if(applied === true ){
             alert( "You've already applied to this listing!")
         }else {
+            setTextBox(true)
             setApplied(true)
             fetch('http://localhost:3000/applied_listings', {
                 method: 'POST', 
@@ -153,7 +157,7 @@ function OneListing({user}){
                 console.log(newAppliedListing);
             })
         }
-        setTextBox(true)
+        // setTextBox(true)
     }
     
     function handleAlreadySaved(){
