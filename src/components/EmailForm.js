@@ -12,8 +12,8 @@ function EmailForm({listing, setTextBox}){
 
     function sendEmail(e) {
     e.preventDefault();
-
-        if (listing.saved_listings){
+    let findSaved = listing.saved_listings.find(savedListing => savedListing.listing_id === listing.id)
+        if (!!findSaved){
    
           fetch(`http://localhost:3000/saved_listings/${listing.saved_listings[0].id}`,{
             method: 'DELETE',
