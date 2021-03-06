@@ -54,7 +54,7 @@ function OneListing({user}){
         let imageArr = JSON.parse(listing.photos)
         
         console.log("LISY", listing);
-
+        // Logic could cause issues keep an eye on it based on whenState iss et for listing and findinglisting
         let findListing = listing.applied_listings.find(listingJoin => listingJoin.listing_id === listing.id)
 
         let findSaved = listing.saved_listings.find(savedListing => savedListing.listing_id === listing.id)

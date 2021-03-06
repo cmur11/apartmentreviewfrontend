@@ -20,7 +20,9 @@ function ListingCards({listing, user, oneApartment}){
         // console.log(listing.reviews)
      
    function getAverage(){
-       if (listing.reviews){
+
+    let findListing = listing.reviews.find(listingJoin => listingJoin.listing_id === listing.id)
+       if (!!findListing){
         //    console.log(listing.reviews)
         const arrayOfReviews = listing.reviews.map((review) => review.rating )
         // console.log(arrayOfReviews)
@@ -30,7 +32,11 @@ function ListingCards({listing, user, oneApartment}){
         // console.log(average)
             return average
         // console.log(average)
+       }else{
+           let average = "No ratings provided"
+           return average
        }
+
     //    console.log('hi')
    }
     
