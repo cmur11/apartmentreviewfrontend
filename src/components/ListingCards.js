@@ -65,18 +65,22 @@ function ListingCards({listing, user, oneApartment}){
 
     
         (<div  className = "listing"> 
+        <Link to =  {`/apartment/${listing.id}`}>
+              <img onClick = {(e) => handleClick(listing)} alt = {listing.address} src = {JSON.parse(listing.photos)[0]}/>
+              </Link>
               <Link to =  {`/apartment/${listing.id}`}>
                 <p>View this place</p>
                </Link>
                
                <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4> 
+               <Link to =  {`/apartment/${listing.id}`}>
               <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
+              </Link>
               <h5>Price:${listing.price}</h5>
               <p>Bedrooms:{listing.bedrooms}</p>
               <p>Bathrooms:{listing.bedrooms}</p>
               <p>Sqft:{listing.sqft}</p>
               <p>Neighborhood: {listing.neighborhood}</p>
-              <img onClick = {(e) => handleClick(listing)} alt = {listing.address} src = {JSON.parse(listing.photos)[0]}/>
               
         </div>)
 

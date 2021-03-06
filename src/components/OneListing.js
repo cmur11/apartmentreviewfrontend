@@ -141,6 +141,7 @@ function OneListing({user}){
         }else {
             setTextBox(true)
             setApplied(true)
+            // setSaved(false)
             fetch('http://localhost:3000/applied_listings', {
                 method: 'POST', 
                 headers: {
