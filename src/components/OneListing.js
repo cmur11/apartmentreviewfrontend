@@ -31,7 +31,7 @@ function OneListing({user}){
             // imageArr = (JSON.parse(listing.photos))
             return listingPhotos.map((photo) => {
                 // console.log("PHOTO", photo)
-                return <PhotoCard photo = {photo} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
+                return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
             })
         // }
     }

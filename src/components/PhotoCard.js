@@ -3,7 +3,7 @@
 import Carousel from 'react-bootstrap/Carousel'
 import react, {useState,useEffect} from "react"
 import axios from 'axios'
-function PhotoCard({photo, listingPhotos, setListingPhotos}){
+function PhotoCard({photo, listingPhotos, setListingPhotos, listing}){
     const [images,setImages] = useState([])
     // console.log("LOWER", photo)
     const [index, setIndex] = useState(0);
@@ -42,7 +42,7 @@ function PhotoCard({photo, listingPhotos, setListingPhotos}){
         // axios.post('')
         setNewFile(selectedFile)
     }
-
+    console.log(listing.photos)
     const imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () => {
@@ -54,7 +54,24 @@ function PhotoCard({photo, listingPhotos, setListingPhotos}){
             }
         }
         reader.readAsDataURL(e.target.files[0])
+
+        fetch(`http://localhost:3000/listings/${listing.id}`, {
+            method: 'PATCH', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                photos: [...listingPhotos, reader.result]
+            
+            }),
+        })
+        .then(response => response.json())
+        .then(res => {
+        console.log(res.photos);
+        })
     }
+
+    
 
 return(
 
