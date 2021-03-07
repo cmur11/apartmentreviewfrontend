@@ -79,7 +79,7 @@ function ListingCards({listing, user, oneApartment}){
               <h5>Price:${listing.price}</h5>
               <p>Bedrooms:{listing.bedrooms}</p>
               <p>Bathrooms:{listing.bedrooms}</p>
-              <p>Sqft:{listing.sqft}</p>
+              <p>Sqft:{listing.sqft} ft</p>
               <p>Neighborhood: {listing.neighborhood}</p>
               
         </div>)
