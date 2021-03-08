@@ -1,6 +1,7 @@
 import react, {useState} from "react"
 // import { Card, Icon } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
+import { Card, Icon, Image } from 'semantic-ui-react'
 // import { BrowserRouter as  Link} from "react-router-dom";
 // import OneListing from "./OneListing"
 
@@ -63,28 +64,43 @@ function ListingCards({listing, user, oneApartment}){
         
    
 
-    
-        (<div  className = "listing"> 
+        <Card>
+        
         <Link to =  {`/apartment/${listing.id}`}>
-              <img onClick = {(e) => handleClick(listing)} alt = {listing.address} src = {JSON.parse(listing.photos)[0]}/>
+        <Image src= {JSON.parse(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={true} />
+              </Link>
+              
+              <Card.Content>
+               {/* <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4>  */}
+               <Link to =  {`/apartment/${listing.id}`}>
+               <Card.Header>Price${listing.price} <br></br>
+                            Neighborhood: {listing.neighborhood}
+               </Card.Header>
+              {/* <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4> */}
               </Link>
               <Link to =  {`/apartment/${listing.id}`}>
-                <p>View this place</p>
-               </Link>
-               
-               <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4> 
-               <Link to =  {`/apartment/${listing.id}`}>
-              <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
-              </Link>
-              <h5>Price:${listing.price}</h5>
-              <p>Bedrooms:{listing.bedrooms}</p>
-              <p>Bathrooms:{listing.bedrooms}</p>
-              <p>Sqft:{listing.sqft} ft</p>
-              <p>Neighborhood: {listing.neighborhood}</p>
+              <Card.Meta>
+             <span className='address'>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
+             </Card.Meta>
+             </Link>
               
-        </div>)
+              <Card.Description>
 
-        
+              Bedrooms:{listing.bedrooms}<br></br>
+              Bathrooms:{listing.bedrooms}
+              </Card.Description>
+             
+              <p>Sqft:{listing.sqft} ft</p>
+              
+              <Card.Content extra>
+      <a>
+        <Icon name='star' />
+        {listing.reviews ? getAverage() : "No Ratings"}
+      </a>
+    </Card.Content>
+     
+    </Card.Content>
+        </Card>
 
 
             )
