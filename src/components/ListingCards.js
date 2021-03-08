@@ -64,7 +64,7 @@ function ListingCards({listing, user, oneApartment}){
         
    
 
-        <Card>
+        <Card style={{padding: "20px"}}>
         
         <Link to =  {`/apartment/${listing.id}`}>
         <Image src= {JSON.parse(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={true} />
