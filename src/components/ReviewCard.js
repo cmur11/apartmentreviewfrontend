@@ -48,11 +48,14 @@ function ReviewCard ({review, user, handleUpdatedReview}){
         setUpdate(false)
 
     }
-    // console.log(update)
+ 
+        // console.log(user)
+    
+   
 
 return( <>
 <div>
-
+    <h5>User: {user.username}</h5>
     <h5>Review: {review.comment}</h5>
     <h5>Rating: {review.rating}</h5>
     {/* <button></button> */}

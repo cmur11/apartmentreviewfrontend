@@ -5,6 +5,7 @@ import Review from "./Review"
 import EmailForm from "./EmailForm"
 import PhotoCard from "./PhotoCard"
 import Modal from 'react-modal';
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 function OneListing({user}){
     const {id} = useParams()
@@ -25,31 +26,15 @@ function OneListing({user}){
     
     function getPhotos(){
 
-        // if(listing.photos){
-            // let imageArr = JSON.parse(listing.photos)
-            // console.log(imageArr)
-            // imageArr = (JSON.parse(listing.photos))
             return listingPhotos.map((photo) => {
-                // console.log("PHOTO", photo)
+    
                 return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
             })
-        // }
+     
     }
 
   
 
-        // let image 
-        // if (listing)
-        //     { image = JSON.parse(listing.photos).map((photo) => {
-
-        //         return(  <PhotoCard photo = {photo}/>)
-        //     } )
-        //     let test = listing.photos
-        //     let arr = Array.from(test)
-        //     console.log(arr)
-        //     }
-   
-//    debugger
     function helper(listing){
         let imageArr = JSON.parse(listing.photos)
         
@@ -68,13 +53,7 @@ function OneListing({user}){
         setSaved(!!findSaved)
     }
 
-    // function validate( ){
-    //     if (listing.applied_listings && saved == false) {
-    //         setSaved(true)
-    //     }
-
-    // }
-    
+ 
     useEffect(()=> {
         fetch(`http://localhost:3000/listings/${id}`)
         .then(res => res.json())
@@ -91,7 +70,7 @@ function OneListing({user}){
     
     function handleSave(e){
        
-        //    setSaved(true)
+        
         if (saved === true){
             alert("You've already saved this listing!")
         } else{
@@ -112,7 +91,7 @@ function OneListing({user}){
             .then(newSavedListing => {
                 console.log(newSavedListing);
             })
-            // console.log(listing.id)
+            
             fetch(`http://localhost:3000/listings/${listing.id}`, {
                 method: 'PATCH', 
                 headers: {
@@ -166,12 +145,16 @@ function OneListing({user}){
     }
     
     
-    //    const photos = JSON.parse(listing.photos)[0]
-    //    console.log(photos)
   
-    // if (listing.saved_listings.find(savedListing => savedListing.user_id === user.id)){
-    //     setSaved(true)
-    // }
+
+
+
+
+
+
+
+
+
 
     if (listing) {
        
@@ -180,16 +163,25 @@ function OneListing({user}){
     <>
     <div>
         {getPhotos()}
-        </div>
-            <div  className = "onelisting">
-                <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4>
-                <h5>${listing.price}</h5>
+    </div>
+
+    <Card style={{padding: "20px"}}>
+                 <Card.Header>Price ${listing.price} <br></br>
+                            {listing.neighborhood}
+               </Card.Header>
+               <Card.Meta>
+             <span className='address'>{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
+             </Card.Meta>
+
+                {/* <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4> */}
+                <Card.Description>
                 <p>Bedrooms:{listing.bedrooms}</p>
                 <p>Bathrooms:{listing.bedrooms}</p>
                 <p>Sqft:{listing.sqft}</p>
-                <p>Neighborhood: {listing.neighborhood}</p>
+                
+                </Card.Description>
                 {/* <img  alt = {listing.address} src = {JSON.parse(listing.photos)}/> */}
-        </div>
+            
         
         <div className = "saveforLaterButton"onClick = {(e) => {handleSave(e)}}>  
             <button>{saved ? "Already Saved" : "Save Listing"}</button>
@@ -209,7 +201,7 @@ function OneListing({user}){
         </div> 
         : null }
        
-    
+       </Card>
         <div>
            {reviewForListing}
         </div>

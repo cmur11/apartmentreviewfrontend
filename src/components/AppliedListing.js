@@ -12,12 +12,12 @@ function AppliedListing({appliedListing}){
             <Image src= {JSON.parse(appliedListing.listing.photos)[0]} alt = {appliedListing.listing.address}/> 
             </Link>
             <Card.Content>
-                Price:${appliedListing.listing.price}
+               <h4> Price ${appliedListing.listing.price}    </h4> 
             <Link to =  {`/apartment/${appliedListing.listing.id}`}>
             <p>View this place</p>
            </Link>
            <Card.Description>
-          Address:{appliedListing.listing.address}, {appliedListing.listing.city}, {appliedListing.listing.state}, {appliedListing.listing.zip_code}
+          {appliedListing.listing.address}, {appliedListing.listing.city}, {appliedListing.listing.state}, {appliedListing.listing.zip_code}
          
           </Card.Description>
             </Card.Content>

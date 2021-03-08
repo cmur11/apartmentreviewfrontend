@@ -11,69 +11,66 @@ function PhotoCard({photo, listingPhotos, setListingPhotos, listing}){
     const [newFile, setNewFile] = useState(null)
     const [addImage, setAddImage] = useState(null)
 
-    // const handleSelect = (selectedIndex, e) => {
-    //   setIndex(selectedIndex);
-    // };
-    
-    // console.log(photos)
+    // console.log(newFile)
 
-    // let image 
-    // getPhotos()
-    // function getPhotos(){
+ 
 
-    //     // if(photos){
-    //     //     image = photos.map((photo) => {
-    //     //         console.log(photo)
-    //     //     })
-    //     // }
-    // }
-
-    console.log(listingPhotos)
+    // console.log(listingPhotos)
     function fileSelectedHandler (e){
         console.log(e.target.files[0].name)
         setSelectedFile(e.target.files[0].name)
         // setNewFile(e.target.files[0].name)
     }
 
-    function fileUploadHandler(e){
-        // const fd = new FormData();
-        // fd.append('image',selectedFile, selectedFile.name)
-        // setListingPhotos([...listingPhotos,selectedFile])
-        // axios.post('')
-        setNewFile(selectedFile)
-    }
-    console.log(listing.photos)
+    let updatedImage;
+    console.log(listingPhotos)
     const imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () => {
             if (reader.readyState === 2){
-               // console.log(reader.result)
-                // setAddImage(reader.result)
-                setListingPhotos([...listingPhotos,reader.result])
-                // this.setState({setAddImage:reader.result})
+                
+                // setListingPhotos([...listingPhotos,reader.result])
+                // updatedImage = reader.result
+                
+                // setListingPhotos([...listingPhotos,reader.result])
+                // setNewFile([...listingPhotos,reader.result])
+
+
+                //  console.log(listingPhotos)
+                //  console.log(typeof(reader.result))
+                fetch(`http://localhost:3000/listings/${listing.id}`, {
+                    method: 'PATCH', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        photos:  listingPhotos
+                        // [...listingPhotos,reader.result]
+                    
+                    }),
+                })
+                .then(response => response.json())
+                .then(res => {
+                console.log(res.photos);
+                })
+           
+
             }
         }
-        reader.readAsDataURL(e.target.files[0])
+       const results = reader.readAsDataURL(e.target.files[0])
+       console.log(updatedImage)
+        console.log([...listingPhotos,results])
+       
 
-        fetch(`http://localhost:3000/listings/${listing.id}`, {
-            method: 'PATCH', 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                photos: [...listingPhotos, reader.result]
-            
-            }),
-        })
-        .then(response => response.json())
-        .then(res => {
-        console.log(res.photos);
-        })
+     
+        
+            // console.log(listingPhotos)
     }
-
+    
+    
     
 
-return(
+    return(
 
     <>
     {/* <Carousel>
@@ -95,7 +92,7 @@ return(
         <input  type = "file" onChange= {(e) => imageHandler(e)}
         />
         {/* <button onClick={() => this.fileInput.click()}>Add Photo</button> */}
-        <button onClick = {(e) => fileUploadHandler(e)}>Upload</button>
+        {/* <button onClick = {(e) => fileUploadHandler(e)}>Upload</button> */}
     </div>
 
     {/* <img src= {addImage} /> */}

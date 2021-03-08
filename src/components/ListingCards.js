@@ -73,14 +73,14 @@ function ListingCards({listing, user, oneApartment}){
               <Card.Content>
                {/* <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4>  */}
                <Link to =  {`/apartment/${listing.id}`}>
-               <Card.Header>Price${listing.price} <br></br>
-                            Neighborhood: {listing.neighborhood}
+               <Card.Header>Price ${listing.price} <br></br>
+                            {listing.neighborhood}
                </Card.Header>
               {/* <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4> */}
               </Link>
               <Link to =  {`/apartment/${listing.id}`}>
               <Card.Meta>
-             <span className='address'>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
+             <span className='address'>{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
              </Card.Meta>
              </Link>
               

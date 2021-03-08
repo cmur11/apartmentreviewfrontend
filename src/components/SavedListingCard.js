@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Card, Icon, Image } from 'semantic-ui-react'
 function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
     // console.log(listing)
     const change = (oldPrice - saved_listing.listing.price)
@@ -15,23 +16,37 @@ function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
     }
 
     return(
-        <div  className = "listing"> 
+
+        <Card style={{padding: "20px"}}>
         <Link to =  {`/apartment/${saved_listing.listing.id}`}>
-          <p>View this place</p>
+        <Image src= {JSON.parse(saved_listing.listing.photos)[0]} alt = {saved_listing.listing.address} wrapped ui={true} />
          </Link>
-        <div className = "priceUp">Price Change: ${change}</div>
-        <h4>Address:{saved_listing.listing.address}, {saved_listing.listing.city}, {saved_listing.listing.state}, {saved_listing.listing.zip_code}</h4>
-        <h5>Current price: ${saved_listing.listing.price}</h5>
-        <h5>Price at Saving: ${oldPrice}</h5>
+         <Card.Content>
+
+         <Card.Header>
+         <h4>Current price: ${saved_listing.listing.price} </h4>
+         </Card.Header>
+         <Card.Meta>
+         Price Change: ${change}
+         <br></br>
+        {saved_listing.listing.address}, {saved_listing.listing.city}, {saved_listing.listing.state}, {saved_listing.listing.zip_code}
+         </Card.Meta>
+        {/* <div className = "priceUp">Price Change: ${change}</div> */}
+        {/* <h5>Current price: ${saved_listing.listing.price}</h5> */}
+        {/* <h5>Price at Saving: ${oldPrice}</h5> */}
+        <Card.Description>
+
         <p>Bedrooms:{saved_listing.listing.bedrooms}</p>
         <p>Bathrooms:{saved_listing.listing.bedrooms}</p>
         <p>Sqft:{saved_listing.listing.sqft}</p>
         <p>Neighborhood: {saved_listing.listing.neighborhood}</p>
-        <img alt = {saved_listing.listing.address} src = {JSON.parse(saved_listing.listing.photos)[0]}/>
+        </Card.Description>
+        
         <br></br>
         <br></br>
         <button onClick = {(e) => {removeListing()}}>Remove Listing</button>
-        </div>
+         </Card.Content>
+        </Card>
     )
 }
 export default SavedListingCard;
