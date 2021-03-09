@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 //<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"></link>
 import react, {useState, useEffect} from "react"
-import Navbar from "./Navbar"
+import Navbar from "./Navbar.js"
 import SavedListingsContainer from "./SavedListingsContainer"
 import Cities from "./Cities"
 import LoginForm from "./LoginForm"
@@ -10,6 +10,7 @@ import OneListing from "./OneListing"
 import AppliedListings from "./AppliedListings"
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import {Route, BrowserRouter as Router, Link} from "react-router-dom";
+import NavBarSem from "./NavBarSem"
 // import 'bootstrap/dist/css'
 import '../App.css';
 
@@ -36,7 +37,7 @@ useEffect(()=> {
         <Route exact path="/login">
           <LoginForm />
         </Route>
-        <Route exact path = "/welcome">
+        <Route  exact path = "/welcome">
           <Cities setCity = {setCity}/>
         </Route>
         <Route exact path= "/home/">

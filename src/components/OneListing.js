@@ -10,7 +10,9 @@ import { Card, Icon, Image, Button,Rating } from 'semantic-ui-react'
 import Slider from "react-slick";
 import { Carousel } from "react-bootstrap";
 import { CarouselItem } from "react-bootstrap";
-
+import SimpleImageSlider from "react-simple-image-slider";
+import ImageSlider from "./ImageSlider"
+import Navbar from "./Navbar"
 
 
 function OneListing({user}){
@@ -19,7 +21,7 @@ function OneListing({user}){
     // console.log(listing)
     const [listing, setListing] = useState(null)
     const [listingPhotos, setListingPhotos] = useState([])
-    // const [reviews, setReviews] = useState([])
+    const [query, setQuery] = useState("");
     const [saved, setSaved] = useState(false)
     const [applied, setApplied] = useState(false)
     const [textBox, setTextBox] = useState(false)
@@ -40,8 +42,11 @@ function OneListing({user}){
     function getPhotos(){
         
      return listingPhotos.map((photo) => {
-    
-        return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
+        //    return (<Carousel.Item>  <img
+        //                 className="d-block w-100"
+        //             src={photo}
+        //           />  </Carousel.Item>)
+     return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
     })
 
                 //     return (<Carousel.Item>  <img
@@ -167,7 +172,7 @@ function OneListing({user}){
     }
     
     // Handling of Upload Photo Below
-    console.log(listingPhotos)
+    // console.log(listingPhotos)
     const imageHandler = (e) => {
         const reader = new FileReader();
         // debugger
@@ -176,7 +181,7 @@ function OneListing({user}){
                 // console.log("RESULTS", results);
                 setListingPhotos([...listingPhotos,reader.result])
                 // setListingPhotos([...listingPhotos, results])
-                
+                console.log(reader.result)
                 // updatedImage = reader.result
                 
                 //    setListingPhotos([...listingPhotos,reader.result])
@@ -203,8 +208,8 @@ function OneListing({user}){
 
 
     useEffect(() => {
-        console.log("LISTING", listing);
-        console.log("LISTINGPhotos", listingPhotos);
+        // console.log("LISTING", listing);
+        // console.log("LISTINGPhotos", listingPhotos);
         if (listing) {
             console.log("PHOTOS", listingPhotos);
 
@@ -230,7 +235,7 @@ function OneListing({user}){
 
    
 
-
+    console.log(listingPhotos)
 
     if (listing) {
        
@@ -239,8 +244,8 @@ function OneListing({user}){
     <>
     <div>
       {/* <Carousel>  */}
-    
-        {getPhotos()}
+     <ImageSlider listingPhotos={listingPhotos} /> 
+        {/* {getPhotos()} */}
        
         {/* </Carousel>   */}
     </div>

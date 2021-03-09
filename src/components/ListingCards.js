@@ -62,7 +62,7 @@ function ListingCards({listing, user, oneApartment}){
     // console.log(listing.applied_listings)
     return(
         
-   
+        <div className="listing-card">
 
         <Card style={{padding: "20px"}} textAlign='center'>
         
@@ -101,6 +101,8 @@ function ListingCards({listing, user, oneApartment}){
      
     </Card.Content>
         </Card>
+        </div>
+
 
 
             )

@@ -9576,6 +9576,11 @@
   optionalDependencies:
     "fsevents" "^2.1.3"
 
+"react-simple-image-slider@^2.0.3":
+  "integrity" "sha512-fKYHjY23Lc1/TI2/7d1KpYdyoU4fVTNvBrPBq51yPkTeRvBeBymL5rhtgnYRVzYZ9ByjtNB+byNHKVkEevrgXA=="
+  "resolved" "https://registry.npmjs.org/react-simple-image-slider/-/react-simple-image-slider-2.0.3.tgz"
+  "version" "2.0.3"
+
 "react-slick@^0.28.1":
   "integrity" "sha512-JwRQXoWGJRbUTE7eZI1rGIHaXX/4YuwX6gn7ulfvUZ4vFDVQAA25HcsHSYaUiRCduTr6rskyIuyPMpuG6bbluw=="
   "resolved" "https://registry.npmjs.org/react-slick/-/react-slick-0.28.1.tgz"

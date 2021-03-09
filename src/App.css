@@ -57,3 +57,51 @@
       /* .city {
         border: 2px solid #2052b3;
       } */
+
+
+
+
+      /* Image carousel */
+      .image-slide {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        border: 1px solid black;
+      }
+      
+      
+      .image-slide-left { 
+        grid-area: 1 / 1 / 13 / 2; 
+        border: 1px solid black;
+      }
+      .image-slide-center { 
+        grid-area: 1 / 2 / 13 / 12; 
+        border: 1px solid black;
+      }
+
+      .image-slide-center img {
+        width: 100%;
+      }
+
+      .image-slide-right { 
+        grid-area: 1 / 12 / 13 / 13; 
+        border: 1px solid black;
+        }
+
+
+
+        .listing-card-container {
+          display: flex;
+          flex-flow: row wrap;
+
+          width: 90%;
+          margin: 0 auto;
+        }
+
+        .listing-card {
+          margin: 5px;
+          width: 30%
+        }

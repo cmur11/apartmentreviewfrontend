@@ -3,6 +3,7 @@ import ListingNeighborhoods from "./ListingNeighborhoods"
 import ListingCards from "./ListingCards"
 import Filter from "./Filter"
 import OneListing from "./OneListing"
+import { Divider } from "semantic-ui-react"
 
 
 function ListingContainer({city, setCity,oneApartment, user}){
@@ -80,7 +81,9 @@ function ListingContainer({city, setCity,oneApartment, user}){
             {/* {chosenApartment ?
             <OneListing listing = {chosenApartment} />: */}
             <h2>Results: {filteredForSearch.length}</h2>
-       {listedApartments}
+            <div className='listing-card-container'>
+                {listedApartments}
+            </div>
             {/* } */}
        {/* {NeighborhoodList} */}
 

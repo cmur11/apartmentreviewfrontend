@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card, Icon, Image,Container } from 'semantic-ui-react'
+
 // import {Container} from 'semantic-ui-react'
 function AppliedListing({appliedListing}){
    // console.log(appliedListing)
