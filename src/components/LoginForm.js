@@ -46,7 +46,7 @@ function LoginForm({handleLogin}){
               placeholder="Password" 
               onChange={(e) => (setPassword(e.target.value))} 
             />
-          <Link to="/welcome">
+          <Link to="/home/">
 
            <button animated
             type="submit"

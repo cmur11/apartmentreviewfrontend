@@ -70,7 +70,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
         <div>
             <h1>Welcome {user.username}</h1>
             <Filter filterSearch = {filterSearch} distinctNeighborhoods = {distinctNeighborhoods}/>
-            <div className = "city" align = "left" style={{padding: "20px"}}> 
+            <div className = "city" align = "center" style={{padding: "20px"}}> 
             <h3>Cities</h3>
             <p onClick = {(e) => setCity("Austin")}>Austin</p>
             <p onClick = {(e) => setCity("Boston")}>Boston</p>

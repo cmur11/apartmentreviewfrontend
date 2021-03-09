@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image,Container } from 'semantic-ui-react'
+// import {Container} from 'semantic-ui-react'
 function AppliedListing({appliedListing}){
    // console.log(appliedListing)
     
     // console.log(appliedListing.created_at.getDate())
   
     return(
+      <Container textAlign="center">
+
+
         <Card style={{padding: "20px"}}>
             <Link to =  {`/apartment/${appliedListing.listing.id}`}>
 
@@ -24,6 +28,7 @@ function AppliedListing({appliedListing}){
     
           {/* <img  alt = {appliedListing.listing.address} src = {JSON.parse(appliedListing.listing.photos)[0]}/> */}
         </Card>
+      </Container>
     )
 }
 export default AppliedListing;

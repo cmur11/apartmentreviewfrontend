@@ -1,5 +1,6 @@
 import react, {useState,useEffect} from "react"
 import AppliedListing from "./AppliedListing"
+import {Container} from 'semantic-ui-react'
 
 function AppliedListings({listing}){
     const [appliedListings,setAppliedListings] = useState([])
@@ -14,9 +15,12 @@ function AppliedListings({listing}){
        }
        )
 return(
+    <Container textAlign='center'>
+
     <div>
         {appliedArr}
     </div>
+    </Container>
 )
 
 }

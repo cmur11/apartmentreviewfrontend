@@ -1,4 +1,5 @@
 import react, {useState} from "react"
+import {Rating} from "semantic-ui-react"
 function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,setNewRating, user}){
      
         // console.log(user)
@@ -33,13 +34,14 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
                 onChange = {(e) => setNewReview(e.target.value)}>
                 </input>
                 <label className = "ratingLabel">Rating:  </label>
+                {/* <Rating icon='star' defaultRating={3} maxRating={5} onChange = {(e) => setNewRating(e.target.value)}/> */}
         <select onChange = {(e) => setNewRating(e.target.value)} class = "rating">
             <option value = "1">1</option>
             <option value = "2">2</option>
             <option value = "3">3</option>
             <option value = "4">4</option>
-            <option value = "5">5</option>
-        </select>
+            <option value = "5">5</option> 
+         </select>
         <input value = "Leave your review!" type = "submit"/> 
             </form>
         </div>

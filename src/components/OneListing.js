@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom"
-import react, {useState,useEffect} from "react"
+import react, {useState,useEffect,Component} from "react"
 import Review from "./Review"
 import EmailForm from "./EmailForm"
 import PhotoCard from "./PhotoCard"
 import Modal from 'react-modal';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button,Rating } from 'semantic-ui-react'
+// import Carousel from 'react-bootstrap/Carousel'
+import Slider from "react-slick";
+import { Carousel } from "react-bootstrap";
+import { CarouselItem } from "react-bootstrap";
+
+
 
 function OneListing({user}){
     const {id} = useParams()
@@ -17,23 +23,39 @@ function OneListing({user}){
     const [saved, setSaved] = useState(false)
     const [applied, setApplied] = useState(false)
     const [textBox, setTextBox] = useState(false)
-    // const [photos,setPhotos] = useState([]) 
+    const [addPhoto,setAddPhoto] = useState(false)
 
     
 // let imageArr = JSON.parse(listing.photos)
 
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
 
     
     function getPhotos(){
-
-            return listingPhotos.map((photo) => {
+        
+     return listingPhotos.map((photo) => {
     
-                return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
-            })
-     
+        return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
+    })
+
+                //     return (<Carousel.Item>  <img
+                //         className="d-block w-100"
+                //     src={photo}
+                //   />  </Carousel.Item>)
+  
     }
 
-  
+    // return listingPhotos.map((photo) => {
+    
+    //     return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
+    // })
+
 
     function helper(listing){
         let imageArr = JSON.parse(listing.photos)
@@ -144,15 +166,69 @@ function OneListing({user}){
         console.log('hi')
     }
     
-    
-  
+    // Handling of Upload Photo Below
+    console.log(listingPhotos)
+    const imageHandler = (e) => {
+        const reader = new FileReader();
+        // debugger
+        reader.onload = () => {
+            if (reader.readyState === 2){
+                // console.log("RESULTS", results);
+                setListingPhotos([...listingPhotos,reader.result])
+                // setListingPhotos([...listingPhotos, results])
+                
+                // updatedImage = reader.result
+                
+                //    setListingPhotos([...listingPhotos,reader.result])
+                // setNewFile([...listingPhotos,reader.result])
+                
+                // setState({photos: newPhotoArray}, someCallbackFunction)
+                
+                // console.log(listingPhotos)
+                // console.log(reader.result)
+                
+            }
+        }
+        
+        const results = reader.readAsDataURL(e.target.files[0])
+        // console.log("RESULTS", results);
+      
+        // console.log([...listingPhotos, results])
+
+     
+        
+            // console.log(listingPhotos)
+    }
 
 
 
+    useEffect(() => {
+        console.log("LISTING", listing);
+        console.log("LISTINGPhotos", listingPhotos);
+        if (listing) {
+            console.log("PHOTOS", listingPhotos);
+
+            fetch(`http://localhost:3000/listings/${listing.id}`, {
+        method: 'PATCH', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            photos:  listingPhotos
+            // [...listingPhotos,reader.result]
+        
+        }),
+    })
+    .then(response => response.json())
+    .then(res => {
+    console.log(res.photos);
+    })
+        }
+
+    }, [listingPhotos])
 
 
-
-
+   
 
 
 
@@ -162,46 +238,70 @@ function OneListing({user}){
            
     <>
     <div>
+      {/* <Carousel>  */}
+    
         {getPhotos()}
+       
+        {/* </Carousel>   */}
     </div>
-
+    <button onClick = {(e) => setAddPhoto(true)}>Add Your Own Photo?</button>
+    <br></br>
+    {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
+    {/* <div>
+         <input  type = "file" onChange= {(e) => imageHandler(e)}/>
+    </div> */}
+    
     <Card style={{padding: "20px"}}>
-                 <Card.Header>Price ${listing.price} <br></br>
+                <Card.Header>Price ${listing.price} <br></br>
                             {listing.neighborhood}
-               </Card.Header>
-               <Card.Meta>
-             <span className='address'>{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
-             </Card.Meta>
+                </Card.Header>
+                <Card.Meta>
+                 <span className='address'>{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
+                </Card.Meta>
 
-                {/* <h4 >Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4> */}
                 <Card.Description>
                 <p>Bedrooms:{listing.bedrooms}</p>
                 <p>Bathrooms:{listing.bedrooms}</p>
                 <p>Sqft:{listing.sqft}</p>
-                
                 </Card.Description>
-                {/* <img  alt = {listing.address} src = {JSON.parse(listing.photos)}/> */}
+              
             
         
-        <div className = "saveforLaterButton"onClick = {(e) => {handleSave(e)}}>  
-            <button>{saved ? "Already Saved" : "Save Listing"}</button>
-        </div>
+                <div className = "saveforLaterButton"onClick = {(e) => {handleSave(e)}}>  
+                <Button animated='vertical'>
+                <Button.Content hidden>{saved ? "Saved" : "Save"}</Button.Content>
+                <Button.Content visible>
+                <Icon name='save' />
+                </Button.Content>
+                </Button>
+                    {/* <button>{saved ? "Already Saved" : "Save Listing"}</button> */}
+                </div>
       
        
-        <br></br>
-        <div className = "applyToListing" onClick = {(e) => {handleApply()}}>
-            <button>{applied ? "Broker contacted" : "Apply to Listing"}</button>
-            {/* <button onClick = {(e) => {handleApply()}}>Apply To Listing</button> */}
-        </div>
+                <br></br>
+                <div className = "applyToListing" onClick = {(e) => {handleApply()}}>
+                <Button animated='vertical'>
+                <Button.Content visible>{applied ? "Broker contacted" : "Apply to Listing"}</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='mail' />
+                </Button.Content>
+                    {/* <button>{applied ? "Broker contacted" : "Apply to Listing"}</button> */}
+                    </Button>
+                    {/* <button onClick = {(e) => {handleApply()}}>Apply To Listing</button> */}
+                </div>
     
-        {textBox ? 
-        <div className = "renderApplyBox">
-          
-        <EmailForm listing = {listing} setTextBox = {setTextBox} /> 
-        </div> 
-        : null }
+                {textBox ? 
+                <div className = "renderApplyBox">
+                
+                <EmailForm listing = {listing} setTextBox = {setTextBox} /> 
+                </div> 
+                : null }
        
        </Card>
+       {/* <div>
+
+    <input  type = "file" onChange= {(e) => imageHandler(e)}/>
+    </div> */}
         <div>
            {reviewForListing}
         </div>

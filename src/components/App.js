@@ -8,6 +8,7 @@ import LoginForm from "./LoginForm"
 import ListingContainer from "./ListingContainer.js"
 import OneListing from "./OneListing"
 import AppliedListings from "./AppliedListings"
+import 'bootstrap/dist/css/bootstrap.min.css' 
 import {Route, BrowserRouter as Router, Link} from "react-router-dom";
 // import 'bootstrap/dist/css'
 import '../App.css';
