@@ -1,7 +1,7 @@
 import react, {useState} from "react"
 // import { Card, Icon } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image,Container } from 'semantic-ui-react'
 // import { BrowserRouter as  Link} from "react-router-dom";
 // import OneListing from "./OneListing"
 
@@ -61,10 +61,11 @@ function ListingCards({listing, user, oneApartment}){
     // console.log(listing.photos.split('[')[1])
     // console.log(listing.applied_listings)
     return(
-        
-        <div className="listing-card">
+        // <Container>
 
-        <Card style={{padding: "20px"}} textAlign='center'>
+        <div className="listing-card">
+            
+        <Card textAlign='center'>
         
         <Link to =  {`/apartment/${listing.id}`}>
         <Image src= {JSON.parse(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={true} />
@@ -102,6 +103,7 @@ function ListingCards({listing, user, oneApartment}){
     </Card.Content>
         </Card>
         </div>
+        // </Container>
 
 
 

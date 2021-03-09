@@ -1,5 +1,6 @@
 import react, {useState,useEffect} from "react"
 import SavedListingCard from "./SavedListingCard"
+import { Card, Icon, Image,Container } from 'semantic-ui-react'
 
 function SavedListingsContainer(){
 
@@ -19,9 +20,12 @@ const listArray = savedListings.map((saved_listing)=> {
 })
 // console.log(listArray)
     return(
+      <Container textAlign='center'>
+
         <div>
            {listArray}
         </div>
+      </Container>
     )
 
 }

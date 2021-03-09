@@ -8,10 +8,10 @@ function AppliedListing({appliedListing}){
     // console.log(appliedListing.created_at.getDate())
   
     return(
-      <Container textAlign="center">
+      // <Container textAlign="center">
 
 
-        <Card style={{padding: "20px"}}>
+        <Card >
             <Link to =  {`/apartment/${appliedListing.listing.id}`}>
 
             <Image src= {JSON.parse(appliedListing.listing.photos)[0]} alt = {appliedListing.listing.address}/> 
@@ -29,7 +29,7 @@ function AppliedListing({appliedListing}){
     
           {/* <img  alt = {appliedListing.listing.address} src = {JSON.parse(appliedListing.listing.photos)[0]}/> */}
         </Card>
-      </Container>
+      // </Container>
     )
 }
 export default AppliedListing;

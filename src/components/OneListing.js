@@ -5,7 +5,7 @@ import Review from "./Review"
 import EmailForm from "./EmailForm"
 import PhotoCard from "./PhotoCard"
 import Modal from 'react-modal';
-import { Card, Icon, Image, Button,Rating } from 'semantic-ui-react'
+import { Card, Icon, Image, Button,Rating, Container } from 'semantic-ui-react'
 // import Carousel from 'react-bootstrap/Carousel'
 import Slider from "react-slick";
 import { Carousel } from "react-bootstrap";
@@ -243,20 +243,14 @@ function OneListing({user}){
            
     <>
     <div>
-      {/* <Carousel>  */}
      <ImageSlider listingPhotos={listingPhotos} /> 
-        {/* {getPhotos()} */}
-       
-        {/* </Carousel>   */}
     </div>
     <button onClick = {(e) => setAddPhoto(true)}>Add Your Own Photo?</button>
     <br></br>
     {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
-    {/* <div>
-         <input  type = "file" onChange= {(e) => imageHandler(e)}/>
-    </div> */}
-    
-    <Card style={{padding: "20px"}}>
+ 
+    <Container textAlign='center'>
+    <Card >
                 <Card.Header>Price ${listing.price} <br></br>
                             {listing.neighborhood}
                 </Card.Header>
@@ -303,6 +297,9 @@ function OneListing({user}){
                 : null }
        
        </Card>
+       </Container>
+       {/* </div>
+</div> */}
        {/* <div>
 
     <input  type = "file" onChange= {(e) => imageHandler(e)}/>
