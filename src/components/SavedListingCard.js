@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button } from 'semantic-ui-react'
+// import { Card, Icon, Image, Button,Rating, Container } from 'semantic-ui-react'
 function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
     // console.log(listing)
     const change = (oldPrice - saved_listing.listing.price)
@@ -24,7 +25,7 @@ function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
          <Card.Content>
 
          <Card.Header>
-         <h4>Current price: ${saved_listing.listing.price} </h4>
+        <h7> Current price: ${saved_listing.listing.price} </h7>
          </Card.Header>
          <Card.Meta>
          Price Change: ${change}
@@ -44,7 +45,7 @@ function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
         
         <br></br>
         <br></br>
-        <button onClick = {(e) => {removeListing()}}>Remove Listing</button>
+        <Button onClick = {(e) => {removeListing()}}>Remove Listing</Button>
          </Card.Content>
         </Card>
     )

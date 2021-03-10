@@ -59,7 +59,7 @@ function ListingCards({listing, user, oneApartment}){
 
         <div className="listing-card">
             
-        <Card >
+        <Card style= {{marginRight:"15px", marginBottom:"15px"}}>
         
               <Card.Content>
          <Link to =  {`/apartment/${listing.id}`}>

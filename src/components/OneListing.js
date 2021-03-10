@@ -261,13 +261,17 @@ function OneListing({user}){
      <ImageSlider listingPhotos={listingPhotos} /> 
     </div>
     {/* </Card>
-    </Container> */}<Button animated='vertical'>
+    
+    </Container> */}
+    <br></br>
+    <Button animated='vertical'>
 
         <Button.Content onClick = {(e) => setAddPhoto(true)}hidden>Upload</Button.Content>
                 <Button.Content visible>
                 <Icon name='photo' />
                 </Button.Content>
     </Button>
+    <br></br>
     <br></br>
     {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
  

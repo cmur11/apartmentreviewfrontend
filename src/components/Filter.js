@@ -21,36 +21,45 @@ function Filter({filterSearch, distinctNeighborhoods}){
         return(<option value = {neighborhood}>{neighborhood}</option>)
     })
     return(
-        <div className = "Filter DropDowns">
+        <div className = "FilterDropDowns">
 
 <form className = "filter form" onSubmit = {(e) =>handleSubmit(e)}> 
+{/* <div class="ui form"> */}
+
         <label className = "bathroomLabel">Bathrooms:  </label>
-        <select onChange = {(e) => setBathrooms(e.target.value)} className = "Bathrooms">
+        <select onChange = {(e) => setBathrooms(e.target.value)} className = "Bathrooms" style={{marginRight:"10px"}} >
             <option value = "0"> </option>
             <option value = "1">1+</option>
             <option value = "2">2+</option>
             <option value = "3">3+</option>
         </select>
+        {/* </div> */}
+        {/* <div class="ui form">  */}
+      
         <label className = "bedroomLabel" >Bedrooms:  </label>
-        <select className = "Bedrooms" onChange = {(e) => setBedrooms(e.target.value)}>
+        <select  onChange = {(e) => setBedrooms(e.target.value)}style={{marginRight:"10px"}}>
             <option value = "0"> </option>
             <option value = "0">Studio</option>
             <option value = "1">1+</option>
             <option value = "2">2+</option>
             <option value = "3">3+</option>
         </select>
+        {/* </div> */}
         {/* <br></br> */}
 
         <label className = "neighborhoodLabel">Neighborhood:</label>
-            <select className = "Neighborhood" onChange = {(e) => setNeighborhoods(e.target.value)}>
+        {/* <div class="ui form"> */}
+        {/* multiple="" class="ui dropdown" */}
+            <select  onChange = {(e) => setNeighborhoods(e.target.value)}style={{marginRight:"10px"}}>
+            {/* className = "Neighborhood"  */}
             <option value = ""> </option>
             {neighborhoodSelect}
                 
             </select>
-
-
+        {/* </div> */}
+        {/* <div class="ui form"> */}
         <label className = "priceLabel" >Max Price:</label>
-        <select className = "Price" onChange = {(e) => setPrice(e.target.value)}>
+        <select className = "Price" onChange = {(e) => setPrice(e.target.value)}style={{marginRight:"10px"}}>
         <option value = "10000000"> </option>
         <option value = "750">$750</option>
         <option value = "1000">$1,000</option>
@@ -65,8 +74,8 @@ function Filter({filterSearch, distinctNeighborhoods}){
         <option value = "3250">$3,250</option>
         <option value = "200000">$200,000</option>
         </select>
-        <input type = "submit"/>
-        
+        <Button >Submit</Button>
+        {/* </div> */}
 </form>
        
          </div>

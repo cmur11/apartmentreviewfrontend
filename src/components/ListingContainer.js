@@ -83,7 +83,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
             <h2>Results: {filteredForSearch.length}</h2>
             <div className='listing-card-container'>
             <Container style={{padding: "20px"}}>
-              <Card.Group itemsPerRow={3} style={{padding: "20px"}}>
+              <Card.Group itemsPerRow={3} style={{padding: "20px", margin: "5px"}} >
                 {listedApartments}
                 </Card.Group>
             </Container>
