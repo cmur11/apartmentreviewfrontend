@@ -254,7 +254,8 @@ function OneListing({user}){
     <br></br>
     {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
  
-    <Container textAlign='center'>
+    <Container textAlign='center'
+   >
     <Card >
                 <Card.Header>Price ${listing.price} <br></br>
                             {listing.neighborhood}

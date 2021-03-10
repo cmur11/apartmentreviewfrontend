@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import emailjs from 'emailjs-com';
+import { Button, Form, Message } from 'semantic-ui-react'
 
 
 // import './ContactUs.css';
@@ -15,6 +16,7 @@ function EmailForm({listing, setTextBox}){
     let findSaved = listing.saved_listings.find(savedListing => savedListing.listing_id === listing.id)
         if (!!findSaved){
    
+       
           fetch(`http://localhost:3000/saved_listings/${listing.saved_listings[0].id}`,{
             method: 'DELETE',
             })
@@ -33,27 +35,32 @@ function EmailForm({listing, setTextBox}){
     }
 
   return (
-    <form className="email-form" onSubmit={sendEmail}>
+    
+    // <form className="email-form" onSubmit={sendEmail}>
        
-      <label>Broker Email</label>
-      <input type="text" value = {listing.broker_email} name="contact" />
-      <br></br>
-      <label>Address</label>
-      <input type="text"  value = {address} onChange = {(e) => setAddress(e.target.value)}name="address" />
-      <br></br>
-      <label>City</label>
-      <input type="text"  value = {listing.city} name="city" />
-      <br></br>
-      <label>State</label>
-      <input type="text"  value = {listing.state} name="state" />
-      <br></br>
-      <label>Name</label>
-      <input type="text"  value ={name}   onChange = {(e) => (setName(e.target.value))}  name="name" />
-      <br></br>
+      <Form success onSubmit={sendEmail}>
+    
+      <Form.Input  label='Email' type="text" value = {listing.broker_email} name="contact" />
+      
+      <Form.Input label="Address" type="text"  value = {address} onChange = {(e) => setAddress(e.target.value)}name="address" />
+     
+      <Form.Input label="City" type="text"  value = {listing.city} name="city" />
+    
+      <Form.Input label="State" type="text"  value = {listing.state} name="state" />
+     
+      <Form.Input label="Name" type="text"  value ={name}   onChange = {(e) => (setName(e.target.value))}  name="name" />
+    
       <label>Message</label>
-      <textarea value = {message} onChange = {(e) => setMessage(e.target.value)} name="message" />
-      <input type="submit" value="Send" />
-    </form>
+      <textarea label = "Message" value = {message} onChange = {(e) => setMessage(e.target.value)} name="message" />
+      <Message
+      success
+      header='Email Sent!'
+      content="You're email has been sent, and this listing has been added to your applied list"
+    />
+      <Button>Submit</Button> 
+       {/* <input type="submit" value="Send" /> */}
+    </Form>
+    // </form>
   );
 }
 export default EmailForm;
