@@ -1,11 +1,22 @@
 import react, {useState} from "react"
 import {Rating} from "semantic-ui-react"
+import { Button, Form } from 'semantic-ui-react'
+// import React, { Component } from 'react'
+
 function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,setNewRating, user}){
-     
+     const [showReview,setShowReview] = useState(false)
         // console.log(user)
     function handleSubmit(e){
+        setShowReview(false)
         e.preventDefault()
-        
+        const options = [
+            { key: '1', text: '1', value: '1' },
+            { key: '2', text: '2', value: '2' },
+            { key: '3', text: '3', value: '3' },
+            { key: '4', text: '4', value: '4' },
+            { key: '5', text: '5', value: '5' }
+        ]
+
         fetch('http://localhost:3000/reviews', {
         method: 'POST', 
         headers: {
@@ -25,16 +36,23 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
 
     }
     return(
+        <>
+       <Button onClick = {(e) => setShowReview(true)}>Leave a review</Button>
+
+       {showReview ? 
+       
         <div className = "reviewForm">
-            <form onSubmit = {(e) => handleSubmit(e)}className = "addReview">
-                <input 
+             <Form onSubmit = {(e) => handleSubmit(e)}className = "addReview">
+
+            {/* <form onSubmit = {(e) => handleSubmit(e)}className = "addReview"> */}
+            <Form.Input 
                 value = {newReview}
                 type = "text"
                 placeholder = "Leave your review here!"
-                onChange = {(e) => setNewReview(e.target.value)}>
-                </input>
-                <label className = "ratingLabel">Rating:  </label>
-                {/* <Rating icon='star' defaultRating={3} maxRating={5} onChange = {(e) => setNewRating(e.target.value)}/> */}
+                onChange = {(e) => setNewReview(e.target.value)}/>
+                {/* </input> */}
+                {/* <label className = "ratingLabel">Rating:  </label> */}
+            
         <select onChange = {(e) => setNewRating(e.target.value)} class = "rating">
             <option value = "1">1</option>
             <option value = "2">2</option>
@@ -42,9 +60,19 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
             <option value = "4">4</option>
             <option value = "5">5</option> 
          </select>
-        <input value = "Leave your review!" type = "submit"/> 
-            </form>
-        </div>
+        
+        {/* <Form.Select  label= "rating" onChange = {(e) => setNewRating(e.target.value)} className = "rating" 
+        options={options}
+        /> */}
+
+    <Form.Button >Submit</Form.Button>
+            {/* </form> */}
+             </Form>
+        </div> 
+        :
+        null
+    }
+        </>
     )
 }
 export default ReviewForm;

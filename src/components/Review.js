@@ -45,7 +45,10 @@ function Review({listing,setListing, user }){
             <ReviewForm user = {user} listing = {listing} newReview = {newReview} setNewReview = {setNewReview} newRating = {newRating} setNewRating = {setNewRating} renderNewReview = {renderNewReview}/>
             <br></br>
             Previous Tenant Reviews
+            <div className = "review-box">
+
             {reviewRender}
+            </div>
         </div>
     )
 }

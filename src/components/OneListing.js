@@ -234,8 +234,20 @@ function OneListing({user}){
 
 
    
+    function getAverage(){
 
-    console.log(listingPhotos)
+        let findListing = listing.reviews.find(listingJoin => listingJoin.listing_id === listing.id)
+           if (!!findListing){
+            const arrayOfReviews = listing.reviews.map((review) => review.rating )
+           let average = (arrayOfReviews.reduce((a, b) => a + b, 0) / arrayOfReviews.length)
+                return Math.round(average * 100)/100
+           }else{
+               let average = "No ratings provided"
+               return average
+           }
+    
+       }
+        
 
     if (listing) {
        
@@ -249,8 +261,13 @@ function OneListing({user}){
      <ImageSlider listingPhotos={listingPhotos} /> 
     </div>
     {/* </Card>
-    </Container> */}
-    <button onClick = {(e) => setAddPhoto(true)}>Add Your Own Photo?</button>
+    </Container> */}<Button animated='vertical'>
+
+        <Button.Content onClick = {(e) => setAddPhoto(true)}hidden>Upload</Button.Content>
+                <Button.Content visible>
+                <Icon name='photo' />
+                </Button.Content>
+    </Button>
     <br></br>
     {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
  
@@ -301,6 +318,14 @@ function OneListing({user}){
                 <EmailForm listing = {listing} setTextBox = {setTextBox} /> 
                 </div> 
                 : null }
+         <Card.Content extra>
+      <a>
+        <Icon name='star' />
+        {listing.reviews ? getAverage() : "No Ratings"}
+      </a>
+    </Card.Content>
+
+                
        
        </Card>
        </Container>

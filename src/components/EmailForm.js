@@ -35,7 +35,7 @@ function EmailForm({listing, setTextBox}){
     }
 
   return (
-    
+  
     // <form className="email-form" onSubmit={sendEmail}>
        
       <Form success onSubmit={sendEmail}>
@@ -52,11 +52,11 @@ function EmailForm({listing, setTextBox}){
     
       <label>Message</label>
       <textarea label = "Message" value = {message} onChange = {(e) => setMessage(e.target.value)} name="message" />
-      <Message
+      {/* <Message
       success
       header='Email Sent!'
       content="You're email has been sent, and this listing has been added to your applied list"
-    />
+    /> */}
       <Button>Submit</Button> 
        {/* <input type="submit" value="Send" /> */}
     </Form>

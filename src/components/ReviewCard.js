@@ -1,5 +1,5 @@
 import react, {useState, useEffect} from "react"
-
+import { Button, Form } from 'semantic-ui-react'
 function ReviewCard ({review, user, handleUpdatedReview}){
     const [userId, setUserId] = useState(false)
     const [checked,setChecked] = useState(false)
@@ -60,18 +60,18 @@ return( <>
     <h5>Rating: {review.rating}</h5>
     {/* <button></button> */}
     <div className = "reviewButton" onClick = {(e) => setUpdate(!update)}>
-    {userId ? <button>Update Review</button> : null }
+    {userId ? <Button>Update Review </Button> : null }
     </div>
     <div className = "updateContent" >
     {update ? 
             <div className = "reviewForm">
-            <form onSubmit = {(e) => handleUpdate(e)}className = "updateReview">
-                <input 
+            <Form onSubmit = {(e) => handleUpdate(e)}className = "updateReview">
+            <Form.Input 
                 value = {reviewContent}
                 type = "text"
                 placeholder = {reviewContent}
-                onChange = {(e) => setReviewContent(e.target.value)}>
-                </input>
+                onChange = {(e) => setReviewContent(e.target.value)}/>
+                {/* </input> */}
                 <label className = "ratingLabel">Rating:  </label>
         <select onChange = {(e) => setReviewRating(e.target.value)} class = "changeRating">
             <option value = "1">1</option>
@@ -81,7 +81,7 @@ return( <>
             <option value = "5">5</option>
         </select>
         <input value = "Update your review!" type = "submit"/> 
-            </form>
+        </Form>
             </div>
         
     

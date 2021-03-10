@@ -46,13 +46,13 @@
   border-bottom: 1px solid #ccc; 
   border-top: 1px solid #ccc; }
 
-#nav li a {
+/* #nav li a {
       display: block;
       padding: 8px 15px;
       text-decoration: none;
       font-weight: bold;
       color: #069;
-      border-right: 1px solid #ccc; }
+      border-right: 1px solid #ccc; } */
 
       /* .city {
         border: 2px solid #2052b3;
@@ -137,48 +137,10 @@
            /* height: 100px; */
            /* display: table-cell; */
         }
-        /* .img-slider{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 600px;
-
-        } */
-
-        /* .cards {
-  list-style: none;
-  padding-left: 200px;
-  padding-right: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.card {
-  margin: 1rem;
-  flex: 0 1 24%;
-}
-.card img {
-  width: 100%;
-}
-.card button {
-  margin-top: 0.5rem;
-}
-@media (min-width: 768px) {
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .card {
-    width: calc(33% - 2rem);
-  }
-}
-@media (min-width: 1024px) {
-  .card {
-    width: calc(25% - 2rem);
-  }
-}
- @media (min-width: 1200px) {
-  .card {
-    width: calc(20% - 2rem);
-  }
-} */
+        .review-box{
+          /* flex: 1; */
+          /* background: #aaa; */
+          overflow: auto;
+          width: 200 px;
+          height: 100 px;
+        }

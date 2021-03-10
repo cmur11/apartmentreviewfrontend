@@ -24,21 +24,15 @@ function ListingCards({listing, user, oneApartment}){
 
     let findListing = listing.reviews.find(listingJoin => listingJoin.listing_id === listing.id)
        if (!!findListing){
-        //    console.log(listing.reviews)
         const arrayOfReviews = listing.reviews.map((review) => review.rating )
-        // console.log(arrayOfReviews)
-        // console.log(arrayOfReviews,arrayOfReviews.length)
        let average = (arrayOfReviews.reduce((a, b) => a + b, 0) / arrayOfReviews.length)
-        // setAverage(average)
-        // console.log(average)
-            return average
-        // console.log(average)
+           
+            return  Math.round(average * 100)/100
        }else{
-           let average = "No ratings provided"
+        let average = "No ratings provided"
            return average
        }
 
-    //    console.log('hi')
    }
     
     function handleClick(listing){
@@ -93,12 +87,12 @@ function ListingCards({listing, user, oneApartment}){
               </Card.Description>
              
               
-              {/* <Card.Content extra>
+              <Card.Content extra>
       <a>
         <Icon name='star' />
         {listing.reviews ? getAverage() : "No Ratings"}
       </a>
-    </Card.Content> */}
+    </Card.Content>
      
     </Card.Content>
         </Card>
