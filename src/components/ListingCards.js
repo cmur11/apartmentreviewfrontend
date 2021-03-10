@@ -65,21 +65,21 @@ function ListingCards({listing, user, oneApartment}){
 
         <div className="listing-card">
             
-        <Card textAlign='center'>
+        <Card >
         
-        <Link to =  {`/apartment/${listing.id}`}>
-        <Image src= {JSON.parse(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={true} />
-              </Link>
-              
               <Card.Content>
+         <Link to =  {`/apartment/${listing.id}`}>
+            <Image height='150' width='180' src= {JSON.parse(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={false} />
+              {/* </Link>  */}
+              
                {/* <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4>  */}
-               <Link to =  {`/apartment/${listing.id}`}>
+               {/* <Link to =  {`/apartment/${listing.id}`}> */}
                <Card.Header>Price ${listing.price} <br></br>
                             {listing.neighborhood}
                </Card.Header>
               {/* <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4> */}
-              </Link>
-              <Link to =  {`/apartment/${listing.id}`}>
+              {/* </Link> */}
+              {/* <Link to =  {`/apartment/${listing.id}`}> */}
               <Card.Meta>
              <span className='address'>{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
              </Card.Meta>
@@ -89,16 +89,16 @@ function ListingCards({listing, user, oneApartment}){
 
               Bedrooms:{listing.bedrooms}<br></br>
               Bathrooms:{listing.bedrooms}
+              <p>Sqft:{listing.sqft} ft</p>
               </Card.Description>
              
-              <p>Sqft:{listing.sqft} ft</p>
               
-              <Card.Content extra>
+              {/* <Card.Content extra>
       <a>
         <Icon name='star' />
         {listing.reviews ? getAverage() : "No Ratings"}
       </a>
-    </Card.Content>
+    </Card.Content> */}
      
     </Card.Content>
         </Card>

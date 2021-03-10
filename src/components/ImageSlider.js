@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card } from "semantic-ui-react"
 
 const ImageSlider = ({ listingPhotos }) => { // takes in listingPhotos as props
   const [index, setIndex] = useState(0); // create state to keep track of listingPhotos index, set the default index to 0
@@ -25,7 +26,8 @@ if (listingPhotos){
 
     return (
         <div>
-          
+           {/* <Card > */}
+               
        {listingPhotos.length > 0 && (
          <div class="image-slide">
              <div class="image-slide-left"> 
@@ -39,6 +41,7 @@ if (listingPhotos){
             </div>
          </div>
        )}
+           {/* </Card> */}
         </div>
     );
 }

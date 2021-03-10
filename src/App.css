@@ -68,63 +68,65 @@
         grid-template-rows: repeat(12, 1fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-
-        border: 1px solid black;
-      }
+        border: 1px solid white;
+        }
       
       
       .image-slide-left { 
-        grid-area: 1 / 1 / 13 / 2; 
-        border: 1px solid black;
+        grid-area: 1 / 3 / 13 / 4; 
+        /* border: 1px solid black; */
+        margin-top: 250 px;
       }
       .image-slide-center { 
-        grid-area: 1 / 2 / 13 / 12; 
-        border: 1px solid black;
+        grid-area: 1 / 4 / 13 / 10; 
+        
+        /* border: 1px solid black; */
+        /* width: 600px; */
       }
 
       .image-slide-center img {
-        width: 100%;
+        width: 80%;
       }
 
       .image-slide-right { 
-        grid-area: 1 / 12 / 13 / 13; 
-        border: 1px solid black;
+        grid-area: 1 / 10 / 13 / 11; 
+        /* border: 1px solid black; */
+        /* background-color: red; */
         }
 
 
 
-        .listing-card-container {
-          display: flex;
-          flex-flow: row wrap;
-
-          width: 90%;
-          margin: 0 auto;
+      /* .listing-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
-        .listing-card {
+         .listing-card {
           margin: 5px;
           width: 30%
         }
-        
+         */
         div.ui.center.aligned.container{
           display: flex;
           justify-content: center;
           align-items: center;
         }
-        
-        div.ui.card{
+
+        div.ui.cards{
           display: flex;
           justify-content: center;
           align-items: center;
-          /* width: 100%; */
-          /* display: table-cell; */
+           /* width: 100%; */
+           /* height: 100px; */
+           /* display: table-cell; */
         }
-        div.ui.three.cards{
-          /* display: table; */
-          width: 100%
-        }
-        /* .img{
-          width: 100px;
+        /* .img-slider{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 600px;
+
         } */
 
         /* .cards {

@@ -242,9 +242,14 @@ function OneListing({user}){
         return( 
            
     <>
-    <div>
+    {/* <Container textAlign='center'>
+    <Card > */}
+
+    <div className = 'img-slider'>
      <ImageSlider listingPhotos={listingPhotos} /> 
     </div>
+    {/* </Card>
+    </Container> */}
     <button onClick = {(e) => setAddPhoto(true)}>Add Your Own Photo?</button>
     <br></br>
     {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
