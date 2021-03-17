@@ -69,7 +69,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
        //console.log(filteredForSearch.length)
     return(
         <div>
-            <h1>Welcome {user.username}</h1>
+            <h1 className= "title">Tenant Truths</h1>
             <Filter filterSearch = {filterSearch} distinctNeighborhoods = {distinctNeighborhoods}/>
             <div className = "city" align = "center" style={{padding: "20px"}}> 
             <h3>Cities</h3>

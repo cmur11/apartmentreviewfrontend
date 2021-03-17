@@ -42,25 +42,14 @@ function OneListing({user}){
     function getPhotos(){
         
      return listingPhotos.map((photo) => {
-        //    return (<Carousel.Item>  <img
-        //                 className="d-block w-100"
-        //             src={photo}
-        //           />  </Carousel.Item>)
+      
      return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
     })
 
-                //     return (<Carousel.Item>  <img
-                //         className="d-block w-100"
-                //     src={photo}
-                //   />  </Carousel.Item>)
   
     }
 
-    // return listingPhotos.map((photo) => {
-    
-    //     return <PhotoCard photo = {photo} listing = {listing} listingPhotos = {listingPhotos} setListingPhotos = {setListingPhotos}/>
-    // })
-
+console.log(user.id)
 
     function helper(listing){
         let imageArr = JSON.parse(listing.photos)
@@ -155,7 +144,7 @@ function OneListing({user}){
                 },
                 body: JSON.stringify({
                     listing_id: listing.id,
-                    user_id: 1,
+                    user_id: user.id,
                     
                 }),
             })
@@ -180,17 +169,8 @@ function OneListing({user}){
             if (reader.readyState === 2){
                 // console.log("RESULTS", results);
                 setListingPhotos([...listingPhotos,reader.result])
-                // setListingPhotos([...listingPhotos, results])
+               
                 console.log(reader.result)
-                // updatedImage = reader.result
-                
-                //    setListingPhotos([...listingPhotos,reader.result])
-                // setNewFile([...listingPhotos,reader.result])
-                
-                // setState({photos: newPhotoArray}, someCallbackFunction)
-                
-                // console.log(listingPhotos)
-                // console.log(reader.result)
                 
             }
         }

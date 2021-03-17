@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {  Nav, NavDropdown } from 'react-bootstrap';
 import { Menu } from 'semantic-ui-react'
-function Navbar({city}){
+function Navbar({city,user}){
     
         return(
                  <Menu>
@@ -11,8 +11,11 @@ function Navbar({city}){
                             <Menu.Item><NavLink to= "/home/">Home</NavLink></Menu.Item>
                             <Menu.Item><NavLink to= "/applied_listings">Applied Apartments</NavLink></Menu.Item>
                             <Menu.Item><NavLink to= "/saved_listings">Saved Apartments</NavLink></Menu.Item>
+                            {/* <Menu.Menu position= "justified">
+                            <Menu.Item className = "tenant"><NavLink to= "/home">Tenant Truths</NavLink></Menu.Item>
+                            </Menu.Menu> */}
                             <Menu.Menu position= "right">
-                                <Menu.Item><NavLink to= "/login">Logout</NavLink></Menu.Item>
+                                <Menu.Item><NavLink to= "/login">Logout {user.username} </NavLink></Menu.Item>
                             </Menu.Menu>
                      {/* </div> */}
                     {/* </ul> */}

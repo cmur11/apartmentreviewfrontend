@@ -32,7 +32,7 @@ useEffect(()=> {
       <Router>
       <Route>
 
-      <Navbar city = {city}/>
+      <Navbar city = {city} user = {user}/>
       </Route>
         <Route exact path="/login">
           <LoginForm />
