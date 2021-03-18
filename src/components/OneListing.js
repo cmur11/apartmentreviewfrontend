@@ -5,7 +5,7 @@ import Review from "./Review"
 import EmailForm from "./EmailForm"
 import PhotoCard from "./PhotoCard"
 import Modal from 'react-modal';
-import { Card, Icon, Image, Button,Rating, Container } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Rating, Container } from 'semantic-ui-react'
 // import Carousel from 'react-bootstrap/Carousel'
 import Slider from "react-slick";
 import { Carousel } from "react-bootstrap";
@@ -26,6 +26,8 @@ function OneListing({user}){
     const [applied, setApplied] = useState(false)
     const [textBox, setTextBox] = useState(false)
     const [addPhoto,setAddPhoto] = useState(false)
+    const [image,setImage] = useState({})
+    const [video,SetVideo] = useState({})
 
     
 // let imageArr = JSON.parse(listing.photos)
@@ -160,11 +162,12 @@ console.log(user.id)
         console.log('hi')
     }
     
-    // Handling of Upload Photo Below
-    // console.log(listingPhotos)
+  
     const imageHandler = (e) => {
         const reader = new FileReader();
+        const results = reader.readAsDataURL(e.target.files[0])
         // debugger
+        
         reader.onload = () => {
             if (reader.readyState === 2){
                 // console.log("RESULTS", results);
@@ -175,14 +178,7 @@ console.log(user.id)
             }
         }
         
-        const results = reader.readAsDataURL(e.target.files[0])
-        // console.log("RESULTS", results);
-      
-        // console.log([...listingPhotos, results])
-
-     
-        
-            // console.log(listingPhotos)
+   
     }
 
 
@@ -206,7 +202,7 @@ console.log(user.id)
     })
     .then(response => response.json())
     .then(res => {
-    console.log(res.photos);
+    console.log(res);
     })
         }
 
@@ -226,23 +222,69 @@ console.log(user.id)
                return average
            }
     
-       }
+    }
         
+ 
+// Testing Cloudinary
+//   function  handleChange  (e){
+//         e.persist()
+//        setImage(() => {
+//             return {
+//                 [e.target.name]: e.target.files[0]
+//             }
+//         })
+//     }
+
+//    function handleSubmit (e) {
+//         e.preventDefault()
+//         const form = new FormData()
+//         form.append("image", setImage.image)
+//         // form.append("video", setVideo.video)
+//         fetch(`http://localhost:3000/listings/${listing.id}`, {
+//             method: "PATCH",
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 photos: [...listingPhotos,form]
+//         }),})
+//         .then(response => response.json())
+//         .then(res => {
+//         console.log(res);
+//         })
+//         setListingPhotos([...listingPhotos,form])
+//     }
+
+
+
+
+
 
     if (listing) {
        
         return( 
            
     <>
-    {/* <Container textAlign='center'>
-    <Card > */}
-
-    <div className = 'img-slider'>
+     <div className = 'img-slider'>
      <ImageSlider listingPhotos={listingPhotos} /> 
     </div>
-    {/* </Card>
-    
-    </Container> */}
+
+    {/* Cloudinary test HTML */}
+      {/* <div className="form">
+                <h1>New Upload</h1>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <label>Image Upload</label>
+                    <input type="file" name="image" onChange={(e) => handleChange(e)}/>
+                    <br/>
+                    <label>Video Upload</label>
+                    <input type="file" name="video" onChange={(e) => handleChange(e)}/>
+                    <br/>
+                    <input type="submit"/>
+                </form>
+        </div> */}
+        
+
+   
     <br></br>
     <Button animated='vertical'>
 
@@ -253,10 +295,9 @@ console.log(user.id)
     </Button>
     <br></br>
     <br></br>
-    {addPhoto ? <input  type = "file" onChange= {(e) => imageHandler(e)}/>  : null}
+    {addPhoto ? <input  type = "file" name = "file" onChange= {(e) => imageHandler(e)}/>  : null}
  
-    <Container textAlign='center'
-   >
+    <Container textAlign='center'>
     <Card >
                 <Card.Header>Price ${listing.price} <br></br>
                             {listing.neighborhood}
@@ -280,7 +321,7 @@ console.log(user.id)
                 <Icon name='save' />
                 </Button.Content>
                 </Button>
-                    {/* <button>{saved ? "Already Saved" : "Save Listing"}</button> */}
+                   
                 </div>
       
        
