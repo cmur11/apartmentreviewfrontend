@@ -54,7 +54,8 @@ function OneListing({user}){
 console.log(user.id)
 
     function helper(listing){
-        let imageArr = JSON.parse(listing.photos)
+        let imageArr = (listing.photos)
+        // JSON.parse(listing.photos)
         
         console.log("LISY", listing);
         // Logic could cause issues keep an eye on it based on whenState iss et for listing and findinglisting

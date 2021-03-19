@@ -47,13 +47,7 @@ function ListingCards({listing, user, oneApartment}){
     }
       
     
-    {/* {chosenApartment ?      */}
-    {/* {handleRender}  : */}
-    // console.log(listing.photos)
-    // console.log(JSON.parse(listing.photos)[0])
-    // console.log(JSON.parse(listing.photos))
-    // console.log(listing.photos.split('[')[1])
-    // console.log(listing.applied_listings)
+   
     return(
         // <Container>
 
@@ -63,7 +57,7 @@ function ListingCards({listing, user, oneApartment}){
         
               <Card.Content>
          <Link to =  {`/apartment/${listing.id}`}>
-            <Image height='150' width='180' src= {JSON.parse(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={false} />
+            <Image height='150' width='180' src= {(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={false} />
               {/* </Link>  */}
               
                {/* <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4>  */}
