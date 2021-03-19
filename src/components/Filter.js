@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Dropdown } from 'semantic-ui-react'
-import { Button, Form } from 'semantic-ui-react'
+
+import { Button } from 'semantic-ui-react'
 
 function Filter({filterSearch, distinctNeighborhoods}){
     const [bathrooms, setBathrooms] = useState(0)

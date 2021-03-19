@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import emailjs from 'emailjs-com';
-import { Button, Form, Message } from 'semantic-ui-react'
+import { Button, Form} from 'semantic-ui-react'
 
 
 // import './ContactUs.css';

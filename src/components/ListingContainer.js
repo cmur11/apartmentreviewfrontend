@@ -1,9 +1,9 @@
-import react, {useState, useEffect} from "react"
+import {useState, useEffect} from "react"
 import ListingNeighborhoods from "./ListingNeighborhoods"
 import ListingCards from "./ListingCards"
 import Filter from "./Filter"
-import OneListing from "./OneListing"
-import { Divider,Container,Card } from "semantic-ui-react"
+// import OneListing from "./OneListing"
+import { Container,Card } from "semantic-ui-react"
 
 
 function ListingContainer({city, setCity,oneApartment, user}){
@@ -15,13 +15,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
     const [neighborhoodFilter, setNeighborhoodFilter] = useState([])
 
   
-    //  console.log(bathroomFilter,bedroomFilter,priceFilter)
-     
-    //  useEffect(()=> {
-    //  fetch('http://localhost:3000/users')
-    //  .then(res => res.json())
-    //  .then((users) => setUser(users[0]))
-    // }, [])
+  
 
     useEffect(()=> {
         fetch('http://localhost:3000/listings')
@@ -29,12 +23,12 @@ function ListingContainer({city, setCity,oneApartment, user}){
         .then((listings) => setListings(listings))
        }, [])
 
-       const filteredWithCity = listings.filter((listing) => listing.city == city)
-    //    console.log(filteredWithCity)
+       const filteredWithCity = listings.filter((listing) => listing.city === city)
+    
 
        const filteredForSearch = filteredWithCity.filter((listing) => (listing.bedrooms >= bedroomFilter && listing.bathrooms >= bathroomFilter && listing.price < priceFilter && listing.neighborhood.includes(neighborhoodFilter)))
     //    console.log(filteredForSearch)
-    // listing bathrooms not working
+   
 
        const listedApartments = filteredForSearch.map((listing) => {
            return(
@@ -60,13 +54,10 @@ function ListingContainer({city, setCity,oneApartment, user}){
             setBedroomFilter(bedrooms)
             setPriceFilter(price)
             setNeighborhoodFilter(neighborhoods)
-        //    console.log(price)
-        //    console.log(bedrooms)
-        //    console.log(price,bedrooms,bathrooms,neighborhoods)
-        //    console.log(neighborhoods)
+       
        }
 
-       //console.log(filteredForSearch.length)
+      
     return(
         <div>
             <h1 className= "title">Tenant Truths</h1>
@@ -78,8 +69,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
             <p onClick = {(e) => setCity("Los Angeles")}>Los Angeles</p>
             <p onClick = {(e) => setCity("Manhattan")}>New York</p>
             </div>
-            {/* {chosenApartment ?
-            <OneListing listing = {chosenApartment} />: */}
+           
             <h2>Results: {filteredForSearch.length}</h2>
             <div className='listing-card-container'>
             <Container style={{padding: "20px"}}>
@@ -89,8 +79,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
             </Container>
 
             </div>
-            {/* } */}
-       {/* {NeighborhoodList} */}
+      
 
        </div>
     )

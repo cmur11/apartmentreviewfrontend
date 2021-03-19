@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from "react"
+import  {useState} from "react"
 import { Button, Form } from 'semantic-ui-react'
 function ReviewCard ({review, user, handleUpdatedReview}){
     const [userId, setUserId] = useState(false)
@@ -16,7 +16,7 @@ function ReviewCard ({review, user, handleUpdatedReview}){
     // console.log(review.user_id)
     validate()
     function validate(){
-        if (user.id == review.user_id && checked === false){
+        if (user.id === review.user_id && checked === false){
             setUserId(true)
             setChecked(true)
         }
@@ -58,34 +58,35 @@ return( <>
     <h5>User: {user.username}</h5>
     <h5>Review: {review.comment}</h5>
     <h5>Rating: {review.rating}</h5>
-    {/* <button></button> */}
+   
     <div className = "reviewButton" onClick = {(e) => setUpdate(!update)}>
-    {userId ? <Button>Update Review </Button> : null }
+        {userId ? <Button>Update Review </Button> : null }
     </div>
+    
     <div className = "updateContent" >
-    {update ? 
+        {update ? 
             <div className = "reviewForm">
-            <Form onSubmit = {(e) => handleUpdate(e)}className = "updateReview">
-            <Form.Input 
-                value = {reviewContent}
-                type = "text"
-                placeholder = {reviewContent}
-                onChange = {(e) => setReviewContent(e.target.value)}/>
-                {/* </input> */}
-                <label className = "ratingLabel">Rating:  </label>
-        <select onChange = {(e) => setReviewRating(e.target.value)} class = "changeRating">
-            <option value = "1">1</option>
-            <option value = "2">2</option>
-            <option value = "3">3</option>
-            <option value = "4">4</option>
-            <option value = "5">5</option>
-        </select>
-        <input value = "Update your review!" type = "submit"/> 
-              </Form>
+                <Form onSubmit = {(e) => handleUpdate(e)}className = "updateReview">
+                <Form.Input 
+                    value = {reviewContent}
+                    type = "text"
+                    placeholder = {reviewContent}
+                    onChange = {(e) => setReviewContent(e.target.value)}/>
+                   
+                    <label className = "ratingLabel">Rating:  </label>
+                        <select onChange = {(e) => setReviewRating(e.target.value)} class = "changeRating">
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                        </select>
+                    <input value = "Update your review!" type = "submit"/> 
+                </Form>
             </div>
         
     
-    : null}
+        : null}
     </div>
 
 </div>

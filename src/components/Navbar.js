@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import {  Nav, NavDropdown } from 'react-bootstrap';
+
 import { Menu } from 'semantic-ui-react'
 function Navbar({city,user}){
     

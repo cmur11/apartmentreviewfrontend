@@ -1,7 +1,6 @@
-import react, {useState} from "react"
-import {Rating} from "semantic-ui-react"
+import {useState} from "react"
 import { Button, Form } from 'semantic-ui-react'
-// import React, { Component } from 'react'
+
 
 function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,setNewRating, user}){
      const [showReview,setShowReview] = useState(false)
@@ -44,14 +43,13 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
         <div className = "reviewForm">
              <Form onSubmit = {(e) => handleSubmit(e)}className = "addReview">
 
-            {/* <form onSubmit = {(e) => handleSubmit(e)}className = "addReview"> */}
+           
             <Form.Input 
                 value = {newReview}
                 type = "text"
                 placeholder = "Leave your review here!"
                 onChange = {(e) => setNewReview(e.target.value)}/>
-                {/* </input> */}
-                {/* <label className = "ratingLabel">Rating:  </label> */}
+                
             
         <select onChange = {(e) => setNewRating(e.target.value)} class = "rating">
             <option value = "1">1</option>
@@ -61,12 +59,9 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
             <option value = "5">5</option> 
          </select>
         
-        {/* <Form.Select  label= "rating" onChange = {(e) => setNewRating(e.target.value)} className = "rating" 
-        options={options}
-        /> */}
-
+       
     <Form.Button >Submit</Form.Button>
-            {/* </form> */}
+            
              </Form>
         </div> 
         :

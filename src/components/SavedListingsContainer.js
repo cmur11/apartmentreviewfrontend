@@ -1,6 +1,6 @@
-import react, {useState,useEffect} from "react"
+import {useState,useEffect} from "react"
 import SavedListingCard from "./SavedListingCard"
-import { Card, Icon, Image,Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 function SavedListingsContainer(){
 

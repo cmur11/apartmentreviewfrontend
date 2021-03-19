@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card } from "semantic-ui-react"
+
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from "react-icons/fa"
 
 const ImageSlider = ({ listingPhotos }) => { // takes in listingPhotos as props
@@ -20,31 +20,31 @@ const slideLeft = () => {
 };
 
 
-    console.log(listingPhotos)
+
 
 
 if (listingPhotos){
 
     return (
         <div>
-           {/* <Card > */}
+       
                
        {listingPhotos.length > 0 && (
          <div class="image-slide">
              <div class="image-slide-left"> 
              <FaArrowAltCircleLeft onClick= {slideLeft}/>
-                {/* <button onClick={slideLeft}>{"<"}</button> */}
+               
              </div>
             <div class="image-slide-center">
                 <img src={listingPhotos[index]} alt={index} />
             </div>
             <div class="image-slide-right"> 
             <FaArrowAltCircleRight onClick= {slideRight}/>
-                {/* <button onClick={slideRight}>{">"}</button> */}
+              
             </div>
          </div>
        )}
-           {/* </Card> */}
+         
         </div>
     );
 }

@@ -1,24 +1,13 @@
-import react, {useState} from "react"
-// import { Card, Icon } from 'semantic-ui-react'
+// import {useState} from "react"
 import { Link } from "react-router-dom";
-import { Card, Icon, Image,Container } from 'semantic-ui-react'
-// import { BrowserRouter as  Link} from "react-router-dom";
-// import OneListing from "./OneListing"
+import { Card, Icon, Image } from 'semantic-ui-react'
+
 
 function ListingCards({listing, user, oneApartment}){
     // console.log(listing
-    const [chosenApartment , setChosenApartment] = useState([])
-    const [sum, setSum] = useState()
-    // const [average, setAverage] = useState("No Reviews")
+    // const [chosenApartment , setChosenApartment] = useState([])
+    // const [sum, setSum] = useState()
  
-
-    // console.log(user)
-    // function handleRender(listing){
-    //      return(
-        //   const arrayOfReviews = listing.reviews.filter((review) => review.rating > 1)
-        //  console.log(listing.reviews)
-        //   const length = arrayOfReviews.length
-        // console.log(listing.reviews)
      
    function getAverage(){
 
@@ -36,20 +25,13 @@ function ListingCards({listing, user, oneApartment}){
    }
     
     function handleClick(listing){
-    //   console.log(listing)
-        setChosenApartment(true)
-        // handleRender(listing)
-        // return(
-           
-        //   <OneListing listing = {listing} key = {listing.id}/>  
-
-        // )
+        // setChosenApartment(true)
     }
       
     
    
     return(
-        // <Container>
+     
 
         <div className="listing-card">
             
@@ -58,16 +40,11 @@ function ListingCards({listing, user, oneApartment}){
               <Card.Content>
          <Link to =  {`/apartment/${listing.id}`}>
             <Image height='150' width='180' src= {(listing.photos)[0]} onClick = {(e) => handleClick(listing)} alt = {listing.address} wrapped ui={false} />
-              {/* </Link>  */}
-              
-               {/* <h4>Average Rating:{listing.reviews ? getAverage() : "No Ratings"} </h4>  */}
-               {/* <Link to =  {`/apartment/${listing.id}`}> */}
+            
                <Card.Header>Price ${listing.price} <br></br>
                             {listing.neighborhood}
                </Card.Header>
-              {/* <h4>Address:{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</h4> */}
-              {/* </Link> */}
-              {/* <Link to =  {`/apartment/${listing.id}`}> */}
+             
               <Card.Meta>
              <span className='address'>{listing.address}, {listing.city}, {listing.state}, {listing.zip_code}</span>
              </Card.Meta>
@@ -91,15 +68,10 @@ function ListingCards({listing, user, oneApartment}){
     </Card.Content>
         </Card>
         </div>
-        // </Container>
-
-
+       
 
             )
 
-    
-            
-           
       
    
 }

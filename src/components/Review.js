@@ -1,15 +1,11 @@
-import react, {useState} from "react"
-import OneListing from "./OneListing"
+import  {useState} from "react"
 import ReviewCard from "./ReviewCard"
 import ReviewForm from "./ReviewForm"
+
 function Review({listing,setListing, user }){
     const [newReview, setNewReview] = useState("")
     const [newRating, setNewRating] = useState("")
-//    const [reviews,setReviews] = useState(listing.reviews)
-    // console.log(reviews)
-//    console.log(listing.reviews)
-//    console.log(listing)
-//    console.log(listing.reviews)
+
    function handleUpdatedReview(review){
 
         console.log(listing.reviews)
