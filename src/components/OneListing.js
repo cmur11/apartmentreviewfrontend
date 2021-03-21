@@ -179,8 +179,7 @@ function OneListing({user}){
 
 
     useEffect(() => {
-        // console.log("LISTING", listing);
-        // console.log("LISTINGPhotos", listingPhotos);
+       
         if (listing) {
             // console.log("PHOTOS", listingPhotos);
 
