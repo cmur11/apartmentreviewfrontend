@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {Card,Button,Component, Form, Container} from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 
 function SignUpForm({setUser}){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const [errors, setErrors] = useState([]);
+    const [name, setName] = useState("")
     const history = useHistory();
   
-    console.log(errors);
+    console.log(name, username,password,email);
   
    
   
@@ -22,9 +24,10 @@ function SignUpForm({setUser}){
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            name: name,
+            email: email,
             username: username,
-            password: password,
-            email: email
+            password: password
         }),
       })
         .then((r) => r.json())
@@ -35,10 +38,10 @@ function SignUpForm({setUser}){
           } else {
             // use the response to set state
             const { user, token } = data;
-  
+            // debugger
             localStorage.setItem("token", token);
   
-            setUser(user);
+            setUser(data.user);
             history.push("/home");
           }
         });
@@ -47,8 +50,18 @@ function SignUpForm({setUser}){
     
   
     return (
-      <form onSubmit={handleSubmit} autoComplete="off">
+
+   <Container textAlign='center'>
+        <Card className = "login" style= {{marginRight:"15px", marginBottom:"15px"}}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
         <h1>Signup</h1>
+        <label>Name</label>
+        <input
+          type="text"
+          name="username"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
   
         <label>Username</label>
         <input
@@ -79,8 +92,17 @@ function SignUpForm({setUser}){
         {errors.map((error) => {
           return <p key={error}>{error}</p>;
         })}
-        <input type="submit" value="Signup" />
-      </form>
+           <Button type='submit'>
+      
+             <Button.Content>Sign Up</Button.Content>
+            </Button>
+             </Form>
+
+             <Link to="/login">
+         <h5>Login?</h5>
+         </Link>
+            </Card>
+        </Container>
     );
   
 }

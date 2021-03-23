@@ -26,12 +26,12 @@ console.log(username,password)
     .then((data) => {
       if (data.errors) {
         // set errors to show errors in the form
-        debugger
+        // debugger
         setErrors(data.errors);
       } else {
         // use the response to set state
         const { currentUser, token } = data;
-        // debugger
+        debugger
        
           localStorage.setItem("token", token);
           setUser(data.user);
@@ -83,6 +83,9 @@ console.log(username,password)
 
          </Form>
          {/* <Button  onClick = {setSignUp(true)}>>SignUp?</Button> */}
+         <Link to="/signup">
+         <h5>Sign Up?</h5>
+         </Link>
         </Card>
         </Container>
   </>
