@@ -80,10 +80,10 @@ function OneListing({user}){
             reviewForListing = <Review listing = {listing} setListing = {setListing} key ={listing.id} user = {user} />
         }
 
-    
+    console.log(user.id)
     function handleSave(e){
        
-        
+        console.log('hi')
         if (saved === true){
             alert("You've already saved this listing!")
         } else{

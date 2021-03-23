@@ -1,58 +1,81 @@
-// import logo from './logo.svg';
-//<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"></link>
+
 import {useState, useEffect} from "react"
 import Navbar from "./Navbar.js"
 import SavedListingsContainer from "./SavedListingsContainer"
 import Cities from "./Cities"
+import SignUpForm from "./SignUpForm"
 import LoginForm from "./LoginForm"
 import ListingContainer from "./ListingContainer.js"
 import OneListing from "./OneListing"
 import AppliedListings from "./AppliedListings"
 import 'bootstrap/dist/css/bootstrap.min.css' 
-import {Route, BrowserRouter as Router} from "react-router-dom";
-
+import {Switch, Route} from "react-router-dom";
+// BrowserRouter as Router
 // import 'bootstrap/dist/css'
 import '../App.css';
 
 
 function App() {
  const [city, setCity] = useState("")
- const [user,setUser] = useState([])
+ const [user,setUser] = useState(null)
 //  const [chosenApartment, setChosenApartment] = useState([])
 
+console.log(user)
+useEffect(() => {
+  // TODO: check if there'a token for the logged in user
+  // GET /me
+  const token = localStorage.getItem("token");
+  // debugger
+  if (token) {
+    fetch('http://localhost:3000/me', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((user) => {
+        // set the user in state
+        setUser(user);
+      });
+  }
+}, []);
+console.log(user)
 
-useEffect(()=> {
-  fetch('http://localhost:3000/users')
-  .then(res => res.json())
-  .then((users) => setUser(users[0]))
- }, [])
 
   return (
     <div className="App">
-      <Router>
-      <Route>
+      {/* <Router> */}
+      <Navbar  user = {user} setUser = {setUser}/>
+      <main>
+      <Switch>
+      
+         <Route path="/signup">
+            <SignUpForm setUser={setUser} />
+            </Route>
+          <Route exact path="/login">
+            <LoginForm user = {user} setUser = {setUser}/>
+          </Route>
+          <Route  exact path = "/welcome">
+            <Cities setCity = {setCity}/>
+          </Route>
+          <Route exact path= "/home/">
+            <ListingContainer city = {city} setCity = {setCity} user = {user} />
+          </Route>
+        <Route exact path = "/apartment/:id">
+          <OneListing user = {user}/>
+        </Route>
+        <Route exact path = "/saved_listings">
+          <SavedListingsContainer />
+        </Route>
+        <Route exact path = "/applied_listings">
+          <AppliedListings user = {user}  />
+        </Route>
 
-      <Navbar city = {city} user = {user}/>
-      </Route>
-        <Route exact path="/login">
-          <LoginForm />
-        </Route>
-        <Route  exact path = "/welcome">
-          <Cities setCity = {setCity}/>
-        </Route>
-        <Route exact path= "/home/">
-          <ListingContainer city = {city} setCity = {setCity} user = {user} />
-        </Route>
-       <Route exact path = "/apartment/:id">
-        <OneListing user = {user}/>
-       </Route>
-       <Route exact path = "/saved_listings">
-        <SavedListingsContainer />
-       </Route>
-       <Route exact path = "/applied_listings">
-        <AppliedListings />
-       </Route>
-      </Router>
+      
+      </Switch>
+       </main>
+
+      {/* </Router> */}
       {/* chosenApartment = {chosenApartment} */}
       {/* {chosenApartment ?  <OneListing chosenApartment = {chosenApartment}/> :<ListingContainer city = {city} setCity = {setCity} oneApartment = {oneApartment}/>} */}
     </div>
