@@ -16,7 +16,7 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
             { key: '5', text: '5', value: '5' }
         ]
 
-        fetch('http://localhost:3000/reviews', {
+        fetch('https://lit-brushlands-74782.herokuapp.com/reviews', {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',

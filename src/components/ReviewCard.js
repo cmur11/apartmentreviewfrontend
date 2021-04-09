@@ -28,7 +28,7 @@ function ReviewCard ({review, user, handleUpdatedReview}){
         e.preventDefault()
        // console.log(reviewContent,reviewRating)
 
-        fetch(`http://localhost:3000/reviews/${review.id}`, {
+        fetch(`https://lit-brushlands-74782.herokuapp.com/reviews/${review.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

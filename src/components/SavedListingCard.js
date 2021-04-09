@@ -8,7 +8,7 @@ function SavedListingCard({saved_listing, oldPrice, removeFromRender}){
     function removeListing(){
         const listingToDelete = saved_listing
 
-        fetch(`http://localhost:3000/saved_listings/${saved_listing.id}`,{
+        fetch(`https://lit-brushlands-74782.herokuapp.com/saved_listings/${saved_listing.id}`,{
         method: 'DELETE',
         })
         .then(res => res.text()) // or res.json()

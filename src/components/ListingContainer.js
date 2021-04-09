@@ -18,7 +18,7 @@ function ListingContainer({city, setCity,oneApartment, user}){
   
 
     useEffect(()=> {
-        fetch('http://localhost:3000/listings')
+        fetch('https://lit-brushlands-74782.herokuapp.com/listings')
         .then(res => res.json())
         .then((listings) => setListings(listings))
        }, [])

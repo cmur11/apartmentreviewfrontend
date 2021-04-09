@@ -17,7 +17,7 @@ function EmailForm({listing, setTextBox}){
         if (!!findSaved){
    
        
-          fetch(`http://localhost:3000/saved_listings/${listing.saved_listings[0].id}`,{
+          fetch(`/saved_listings/${listing.saved_listings[0].id}`,{
             method: 'DELETE',
             })
             .then(res => res.text()) // or res.json()

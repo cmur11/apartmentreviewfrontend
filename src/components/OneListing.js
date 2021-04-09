@@ -68,7 +68,7 @@ function OneListing({user}){
 
  
     useEffect(()=> {
-        fetch(`http://localhost:3000/listings/${id}`)
+        fetch(`https://lit-brushlands-74782.herokuapp.com/listings/${id}`)
         .then(res => res.json())
         .then((listing) => {helper(listing)})
         
@@ -88,7 +88,7 @@ function OneListing({user}){
             alert("You've already saved this listing!")
         } else{
             setSaved(true)
-            fetch('http://localhost:3000/saved_listings', {
+            fetch('https://lit-brushlands-74782.herokuapp.com/saved_listings', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ function OneListing({user}){
                 console.log(newSavedListing);
             })
             
-            fetch(`http://localhost:3000/listings/${listing.id}`, {
+            fetch(`https://lit-brushlands-74782.herokuapp.com/listings/${listing.id}`, {
                 method: 'PATCH', 
                 headers: {
                     'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ function OneListing({user}){
             setTextBox(true)
             setApplied(true)
             
-            fetch('http://localhost:3000/applied_listings', {
+            fetch('https://lit-brushlands-74782.herokuapp.com/applied_listings', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
@@ -183,7 +183,7 @@ function OneListing({user}){
         if (listing) {
             // console.log("PHOTOS", listingPhotos);
 
-            fetch(`http://localhost:3000/listings/${listing.id}`, {
+            fetch(`https://lit-brushlands-74782.herokuapp.com/listings/${listing.id}`, {
         method: 'PATCH', 
         headers: {
             'Content-Type': 'application/json',
@@ -234,7 +234,7 @@ function OneListing({user}){
 //         const form = new FormData()
 //         form.append("image", setImage.image)
 //         // form.append("video", setVideo.video)
-//         fetch(`http://localhost:3000/listings/${listing.id}`, {
+//         fetch(`https://lit-brushlands-74782.herokuapp.com/listings/${listing.id}`, {
 //             method: "PATCH",
 //             headers: {
 //                 'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ function LoginForm({handleLogin, user, setUser}){
 
 console.log(username,password)
   function handleLogin(e) {
-    fetch("http://localhost:3000/login", {
+    fetch("https://lit-brushlands-74782.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

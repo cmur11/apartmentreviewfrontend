@@ -5,7 +5,7 @@ import {Container} from 'semantic-ui-react'
 function AppliedListings({listing}){
     const [appliedListings,setAppliedListings] = useState([])
     useEffect(()=> {
-        fetch('http://localhost:3000/applied_listings')
+        fetch('https://lit-brushlands-74782.herokuapp.com/applied_listings')
         .then(res => res.json())
         .then((listings) => setAppliedListings(listings))
        }, [])

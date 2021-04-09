@@ -27,7 +27,7 @@ useEffect(() => {
   const token = localStorage.getItem("token");
   // debugger
   if (token) {
-    fetch('http://localhost:3000/me', {
+    fetch('https://lit-brushlands-74782.herokuapp.com/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -6,7 +6,7 @@ function SavedListingsContainer(){
 
     const [savedListings,setSavedListings] = useState([])
     useEffect(()=> {
-        fetch('http://localhost:3000/saved_listings')
+        fetch('https://lit-brushlands-74782.herokuapp.com/saved_listings')
         .then(res => res.json())
         .then((listings) => setSavedListings(listings))
        }, [])

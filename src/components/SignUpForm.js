@@ -18,7 +18,7 @@ function SignUpForm({setUser}){
     function handleSubmit(e) {
       e.preventDefault();
       // POST /signup
-      fetch("http://localhost:3000/signup", {
+      fetch("https://lit-brushlands-74782.herokuapp.com/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
