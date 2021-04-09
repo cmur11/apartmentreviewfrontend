@@ -45,7 +45,7 @@ function Navbar({user, setUser}){
         // </header>
 
                  <Menu>
-                        <Menu.Item><NavLink to= "/home/">Home</NavLink></Menu.Item>
+                        <Menu.Item><NavLink to= "/">Home</NavLink></Menu.Item>
                         <Menu.Item><NavLink to= "/applied_listings">Applied Apartments</NavLink></Menu.Item>
                         <Menu.Item><NavLink to= "/saved_listings">Saved Apartments</NavLink></Menu.Item>
                         <Menu.Menu position= "right">

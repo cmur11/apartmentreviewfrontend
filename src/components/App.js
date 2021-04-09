@@ -58,7 +58,7 @@ console.log(user)
           <Route  exact path = "/welcome">
             <Cities setCity = {setCity}/>
           </Route>
-          <Route exact path= "/home/">
+          <Route exact path= "/">
             <ListingContainer city = {city} setCity = {setCity} user = {user} />
           </Route>
         <Route exact path = "/apartment/:id">
