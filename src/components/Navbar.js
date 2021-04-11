@@ -15,11 +15,11 @@ function Navbar({user, setUser}){
 
 
                  <Menu>
-                        <Menu.Item><NavLink to= "/">Home</NavLink></Menu.Item>
+                        <Menu.Item><NavLink to= "/home">Home</NavLink></Menu.Item>
                         <Menu.Item><NavLink to= "/applied_listings">Applied Apartments</NavLink></Menu.Item>
                         <Menu.Item><NavLink to= "/saved_listings">Saved Apartments</NavLink></Menu.Item>
                         <Menu.Menu position= "right">
-                           {user ? <Menu.Item><NavLink to= "/login" onClick = {logout}>Logout {user.username} </NavLink></Menu.Item> : null}
+                           {user ? <Menu.Item><NavLink to= "/" onClick = {logout}>Logout {user.username} </NavLink></Menu.Item> : null}
 
                            
                         </Menu.Menu>

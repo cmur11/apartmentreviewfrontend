@@ -35,7 +35,7 @@ console.log(username,password)
        
           localStorage.setItem("token", token);
           setUser(data.user);
-          history.push("/");
+          history.push("/home");
         }
       });
   }

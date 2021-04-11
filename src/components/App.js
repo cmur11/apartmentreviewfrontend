@@ -52,13 +52,13 @@ console.log(user)
          <Route path="/signup">
             <SignUpForm setUser={setUser} />
             </Route>
-          <Route exact path="/login">
+          <Route exact path="/">
             <LoginForm user = {user} setUser = {setUser}/>
           </Route>
           <Route  exact path = "/welcome">
             <Cities setCity = {setCity}/>
           </Route>
-          <Route exact path= "/">
+          <Route exact path= "/home">
             <ListingContainer city = {city} setCity = {setCity} user = {user} />
           </Route>
         <Route exact path = "/apartment/:id">
