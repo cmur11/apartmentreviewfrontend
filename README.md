@@ -9,7 +9,7 @@ Back End
 
 To use, fork and clonethis repository, & start api server and run:
 
-npm install && npm start
+-npm install && npm start
 
 Features
 Browse apartment listings in various cities
