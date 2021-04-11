@@ -1,7 +1,7 @@
 TenantTruths - Client
 Front-end for TenantTruths, an app inspired by StreetEasy & Yelp, TenantTruths is designed to provide prospective rentors with more transparency on the apartments they are interested in. Built with a React front end and Ruby on Rails back end. Styling was done with Semantic UI and Custom CSS.
 
-[Live Link]("https://tenanttruths.netlify.app/") / Demo
+[Live Link](https://tenanttruths.netlify.app/) / Demo
 
 Back End
 
