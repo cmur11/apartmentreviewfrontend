@@ -10,6 +10,10 @@ TenantTruths is designed to provide prospective rentors with more transparency o
 Built with a React front end and Ruby on Rails back end. Styling was done with Semantic UI and Custom CSS.
 
 [Website](https://tenanttruths.netlify.app/) / [Demo](https://www.loom.com/share/c999bfbd86124f1f8ea8418b6e252fa2)
+Log-in Credentials for Demo <br />
+Username: cm11 <br />
+Password: 123 <br />
+
 
 [Back End](https://github.com/cmur11/apartmentreview_backend)
 
