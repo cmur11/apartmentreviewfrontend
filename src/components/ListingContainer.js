@@ -22,13 +22,13 @@ function ListingContainer({city, setCity,oneApartment, user}){
         .then(res => res.json())
         .then((listings) => setListings(listings))
        }, [])
-
+       
        const filteredWithCity = listings.filter((listing) => listing.city === city)
     
-
+    //    https://lit-brushlands-74782.herokuapp.com/
        const filteredForSearch = filteredWithCity.filter((listing) => (listing.bedrooms >= bedroomFilter && listing.bathrooms >= bathroomFilter && listing.price < priceFilter && listing.neighborhood.includes(neighborhoodFilter)))
     //    console.log(filteredForSearch)
-   
+    // debugger
 
        const listedApartments = filteredForSearch.map((listing) => {
            return(

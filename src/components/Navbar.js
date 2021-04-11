@@ -14,36 +14,6 @@ function Navbar({user, setUser}){
 
 
 
-        // <header>
-        //     <div>
-        //         <div>
-        //         <Link to="/">Home</Link>
-        //         </div>
-
-        //         <div>
-        //             {user ? (
-        //                 <>
-        //                 <Link to="/profile">Profile</Link>
-        //                 <button onClick={logout}>Logout</button>
-        //                 </>
-        //             ) : (
-        //                 <>
-        //                 <Link to="/signup">Signup</Link>
-        //                 <Link to="/login">Login</Link>
-        //                 </>
-        //             )}
-        //         </div>
-
-        //         <div>
-        //         <Link to="/applied_listings">Applied Listings</Link>
-        //         </div>
-
-        //         <div>
-        //         <Link to="/saved_listings">Saved Listings</Link>
-        //         </div>
-        //     </div>
-        // </header>
-
                  <Menu>
                         <Menu.Item><NavLink to= "/">Home</NavLink></Menu.Item>
                         <Menu.Item><NavLink to= "/applied_listings">Applied Apartments</NavLink></Menu.Item>

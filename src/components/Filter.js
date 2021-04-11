@@ -33,8 +33,7 @@ function Filter({filterSearch, distinctNeighborhoods}){
             <option value = "2">2+</option>
             <option value = "3">3+</option>
         </select>
-        {/* </div> */}
-        {/* <div class="ui form">  */}
+    
       
         <label className = "bedroomLabel" >Bedrooms:  </label>
         <select  onChange = {(e) => setBedrooms(e.target.value)}style={{marginRight:"10px"}}>
@@ -44,8 +43,7 @@ function Filter({filterSearch, distinctNeighborhoods}){
             <option value = "2">2+</option>
             <option value = "3">3+</option>
         </select>
-        {/* </div> */}
-        {/* <br></br> */}
+     
 
         <label className = "neighborhoodLabel">Neighborhood:</label>
         {/* <div class="ui form"> */}
@@ -72,7 +70,7 @@ function Filter({filterSearch, distinctNeighborhoods}){
         <option value = "2750">$2,750</option>
         <option value = "3000">$3,000</option>
         <option value = "3250">$3,250</option>
-        <option value = "200000">$200,000</option>
+        {/* <option value = "200000">$200,000</option> */}
         </select>
         <Button >Submit</Button>
         {/* </div> */}

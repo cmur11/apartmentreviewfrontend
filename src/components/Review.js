@@ -36,12 +36,12 @@ function Review({listing,setListing, user }){
     
     return(
         <div>
-            <br>
-            </br>
+            {/* <br>
+            </br> */}
             <ReviewForm user = {user} listing = {listing} newReview = {newReview} setNewReview = {setNewReview} newRating = {newRating} setNewRating = {setNewRating} renderNewReview = {renderNewReview}/>
             <br></br>
-            Previous Tenant Reviews
-            <div className = "review-box">
+            <h3 className = "prevtenant">Previous Tenant Reviews</h3>
+            <div>
 
             {reviewRender}
             </div>

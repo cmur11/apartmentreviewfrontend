@@ -36,19 +36,25 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
     }
     return(
         <>
+        
        <Button onClick = {(e) => setShowReview(true)}>Leave a review</Button>
-
+       <br></br>
        {showReview ? 
        
-        <div className = "reviewForm">
-             <Form onSubmit = {(e) => handleSubmit(e)}className = "addReview">
+        // <div className = "reviewForm" >
+             <Form onSubmit = {(e) => handleSubmit(e)}className = "addReview" >
 
-           
+           {/* <div style="text-align:center"> */}
+
             <Form.Input 
+            className = "formInputReview"
+                // style="text-align:center"
+                style={{width: "25%"}}
                 value = {newReview}
                 type = "text"
                 placeholder = "Leave your review here!"
                 onChange = {(e) => setNewReview(e.target.value)}/>
+           {/* </div> */}
                 
             
         <select onChange = {(e) => setNewRating(e.target.value)} class = "rating">
@@ -61,9 +67,9 @@ function ReviewForm({renderNewReview,listing,newReview, setNewReview, newRating,
         
        
     <Form.Button >Submit</Form.Button>
-            
+            <br></br>
              </Form>
-        </div> 
+        // </div> 
         :
         null
     }

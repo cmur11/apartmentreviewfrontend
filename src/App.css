@@ -200,3 +200,31 @@ content{
 .title{
   color:#032765;
 }
+.loginTenant{
+  color: #032765;
+}
+
+.reviewForm{
+  justify-content: center !important;
+  width:25%  !important!;
+}
+
+
+.ui.form select{
+  display:inline;;
+  text-align: center;
+  width: 10%;
+
+}
+
+button.ui.button {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h3{
+  color: #032765;
+}
+h2{
+  color: #032765;
+}

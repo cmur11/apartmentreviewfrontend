@@ -31,15 +31,15 @@ console.log(username,password)
       } else {
         // use the response to set state
         const { currentUser, token } = data;
-        debugger
+        // debugger
        
           localStorage.setItem("token", token);
           setUser(data.user);
-          history.push("/home");
+          history.push("/");
         }
       });
   }
-
+  
  console.log(user)
   function handleLogout() {
     setUser(null);
@@ -48,9 +48,14 @@ console.log(username,password)
  
     return (
       <>
+
+      <div className = "loginTenant">
+          <h1>Tenant Truths</h1>
+      </div>
+      <br></br>
        <Container textAlign='center'>
           <Card className = "login" style= {{marginRight:"15px", marginBottom:"15px"}}>
-        
+          
           <Form onSubmit = {(e) => handleLogin(e)}>
             {/* <Form.Field> */}
               <input
@@ -62,6 +67,7 @@ console.log(username,password)
                 />
             {/* </Form.Field> */}
             {/* <Form.Field> */}
+           
               <input
                 type="password"
                 value={password}
@@ -75,6 +81,7 @@ console.log(username,password)
           {errors.map((error) => {
           return <p key={error}>{error}</p>;
         })}
+       
            <Button type='submit'>
       
              <Button.Content>Login</Button.Content>
@@ -82,11 +89,15 @@ console.log(username,password)
           
 
          </Form>
+        
          {/* <Button  onClick = {setSignUp(true)}>>SignUp?</Button> */}
          <Link to="/signup">
+         
          <h5>Sign Up?</h5>
          </Link>
+         
         </Card>
+       
         </Container>
   </>
     ) 

@@ -20,7 +20,7 @@ function App() {
  const [user,setUser] = useState(null)
 //  const [chosenApartment, setChosenApartment] = useState([])
 
-console.log(user)
+// console.log(user)
 useEffect(() => {
   // TODO: check if there'a token for the logged in user
   // GET /me
