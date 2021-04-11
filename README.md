@@ -11,9 +11,13 @@ To use, fork and clonethis repository, & start api server and run:
 
 -npm install && npm start
 
-Features<br>
+Features
 Browse apartment listings in various cities
+
 Leave reviews on apartments you previously leased
+
 Upload Photos of your previous apartment
+
 Save favorite listings
+
 Apply to listings through EmailJS integration
