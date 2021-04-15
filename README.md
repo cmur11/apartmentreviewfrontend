@@ -1,4 +1,4 @@
-### TenantTruths - Client<br />
+# TenantTruths - Client<br />
 
 ![](tenanttruths.gif)
 
@@ -17,21 +17,25 @@ Username: cm11 <br />
 Password: 123 <br />
 
 
-### Features<br />
-## Browse apartment listings in various cities <br />
+## Features<br />
+### Browse apartment listings in various cities <br />
 ![](CityFilter.gif)<br />
-<br/>
-## Upload Photos of your previous apartmen t<br />
+
+### Upload Photos of your previous apartment<br />
 ![](Upload.gif)<br />
-## Leave reviews on apartments you previously leased <br />
+
+### Leave reviews on apartments you previously leased <br />
 ![](LeaveReview.gif)<br />
 
-## Save favorite listings<br />
+### Save favorite listings<br />
+![](Save.gif)<br />
 
-## Apply to listings through EmailJS integration<br />
+### Apply to listings through EmailJS integration<br />
+![](Apply.gif)<br />
 
+### Instructions
 To use, fork and clone this repository, & start api server and run:
 
 -npm install && npm start
 
-[Back End](https://github.com/cmur11/apartmentreview_backend)
+## [Back End](https://github.com/cmur11/apartmentreview_backend)
