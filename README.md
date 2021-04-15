@@ -18,16 +18,17 @@ Password: 123 <br />
 
 
 ### Features<br />
-Browse apartment listings in various cities<br />
-![](CityFilter.gif)
+## Browse apartment listings in various cities <br />
+![](CityFilter.gif)<br />
 <br/>
-Leave reviews on apartments you previously leased<br />
-![](LeaveReview.gif)
-Upload Photos of your previous apartment<br />
+## Upload Photos of your previous apartmen t<br />
+![](Upload.gif)<br />
+## Leave reviews on apartments you previously leased <br />
+![](LeaveReview.gif)<br />
 
-Save favorite listings<br />
-![](tenanttruths.gif)
-Apply to listings through EmailJS integration<br />
+## Save favorite listings<br />
+
+## Apply to listings through EmailJS integration<br />
 
 To use, fork and clone this repository, & start api server and run:
 
