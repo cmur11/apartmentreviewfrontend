@@ -22,8 +22,11 @@ Browse apartment listings in various cities<br />
 ![](CityFilter.gif)
 <br/>
 Leave reviews on apartments you previously leased<br />
+![](LeaveReview.gif)
 Upload Photos of your previous apartment<br />
+
 Save favorite listings<br />
+![](tenanttruths.gif)
 Apply to listings through EmailJS integration<br />
 
 To use, fork and clone this repository, & start api server and run:
